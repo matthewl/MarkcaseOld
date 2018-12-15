@@ -1,6 +1,6 @@
 <% @bookmarks.each do |bookmark| %>
   <div class="bookmark mb-5">
-    <h5><%= link_to(bookmark.title, bookmark.url) %></h5>
+    <h4><%= link_to(bookmark.title, bookmark.url) %></h4>
     
     <% if bookmark.tags.present? %>
       <small>Tagged with:</small>
