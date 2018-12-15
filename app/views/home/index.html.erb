@@ -11,6 +11,7 @@
     <% if bookmark.description.present? %>
       <p class="mt-3"><%= bookmark.description %></p>
     <% end %>
+    <br />
     <small class="text-muted"><%= "Saved #{time_ago_in_words(bookmark.created_at)} ago" %></small>
   </div>
 <% end %>
