@@ -1,17 +1,21 @@
 <% @bookmarks.each do |bookmark| %>
   <div class="bookmark mb-5">
     <h4><%= link_to(bookmark.title, bookmark.url) %></h4>
-    
-    <% if bookmark.tags.present? %>
-      <small>Tagged with:</small>
-      <% bookmark.tags.each do |tag| %>
-        <small class="text-muted mr-1"><%= link_to(tag, '#') %></small>
-      <% end %>
-    <% end %>
+
     <% if bookmark.description.present? %>
       <p class="mt-3"><%= bookmark.description %></p>
     <% end %>
-    <br />
-    <small class="text-muted"><%= "Saved #{time_ago_in_words(bookmark.created_at)} ago" %></small>
+
+    <% if bookmark.tags.present? %>
+      <p class="text-muted">Tagged with:
+        <% bookmark.tags.each do |tag| %>
+          <span class="mr-1"><%= link_to(tag, '#') %></span>
+        <% end %>
+      </p>
+    <% end %>
+
+    <p class="text-muted">
+      <%= "Saved #{time_ago_in_words(bookmark.created_at)} ago" %>
+    </small>
   </div>
 <% end %>

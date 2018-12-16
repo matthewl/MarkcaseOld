@@ -12,18 +12,24 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row my-5">
-        <div class="column col-4">
-        </div>
-        <div class="column col-8">
+    <div class="container pt-5">
+      <div class="row">
+        <div id="header" class="column col-4 text-right">
           <h1>Blogmarks</h1>
         </div>
       </div>
       <div class="row">
-        <div id="sidebar" class="column col-4">
+        <div id="sidebar" class="column col-4 text-right">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">New bookmark</a>
+            </li>
+          </ul>
         </div>
-        <div id="content" class="column col-8">
+        <div id="content" class="column col-7 offset-1">
           <%= yield %>
         </div>
       </div>
