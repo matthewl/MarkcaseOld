@@ -1,13 +1,10 @@
 class ApplicationController < ActionController::Base
-  USERS = { "lifo" => "world" }
- 
-  # before_action :authenticate
- 
+  include SessionsHelper
+  before_action :verify_account
+
   private
- 
-  def authenticate
-    authenticate_or_request_with_http_digest do |username|
-      USERS[username]
-    end
+
+  def verify_account
+    redirect_to login_ unless current_account
   end
 end

@@ -14,25 +14,7 @@
   <body>
     <div class="container pt-5">
       <div class="row">
-        <div id="header" class="column col-4 text-right">
-          <h1>Blogmarks</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div id="sidebar" class="column col-4 text-right">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <%= link_to 'Home', root_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'New bookmark', new_bookmark_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Log out', logout_path, class: 'nav-link' %>
-            </li>
-          </ul>
-        </div>
-        <div id="content" class="column col-7 offset-1">
+        <div id="content" class="column col-8 offset-2">
           <%= yield %>
         </div>
       </div>

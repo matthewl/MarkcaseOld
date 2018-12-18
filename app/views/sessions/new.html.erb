@@ -1,0 +1,15 @@
+<%= form_tag(sessions_path, class: "form-signin") do %>
+  <h2 class="form-signin-heading">Please sign in</h2>
+
+  <%= label_tag :email, "Email Address", class: "sr-only" %>
+  <%= text_field_tag :email, nil, id: "inputEmail", class: "form-control", placeholder: "Email address", type: "Email" %>
+
+  <%= label_tag :password, "Password", class: "sr-only" %>
+  <%= password_field_tag :password, nil, id: "inputPassword", class: "form-control", placeholder: "Password" %>
+
+  <label class="checkbox">
+    <input name="remember-me" type="checkbox"> Remember me
+  </label>
+
+  <%= button_tag "Sign in", class: "btn btn-lg btn-primary btn-block" %>
+<% end %>
