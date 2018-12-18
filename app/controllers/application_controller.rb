@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
 
   def verify_account
-    redirect_to login_ unless current_account
+    redirect_to login_path unless current_account
   end
 end
