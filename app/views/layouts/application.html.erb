@@ -22,10 +22,10 @@
         <div id="sidebar" class="column col-4 text-right">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
+              <%= link_to 'Home', root_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">New bookmark</a>
+              <%= link_to 'New bookmark', new_bookmark_path, class: 'nav-link' %>
             </li>
           </ul>
         </div>
