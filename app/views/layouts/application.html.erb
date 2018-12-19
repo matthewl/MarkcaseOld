@@ -12,25 +12,31 @@
   </head>
 
   <body>
-    <div class="container pt-5">
-      <div class="row">
-        <div id="header" class="column col-4 text-right">
-          <h1>Blogmarks</h1>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Blogmarks</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <%= link_to 'Home', root_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Log out', logout_path, class: 'nav-link' %>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </nav>
+    </header>
+    <div class="container pt-5 mt-5">
       <div class="row">
         <div id="sidebar" class="column col-4">
-          <ul class="nav flex-column text-right">
-            <li class="nav-item">
-              <%= link_to 'Home', root_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'New bookmark', new_bookmark_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Log out', logout_path, class: 'nav-link' %>
-            </li>
-          </ul>
+          <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
 
           <hr />
 
