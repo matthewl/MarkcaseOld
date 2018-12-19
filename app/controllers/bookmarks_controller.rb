@@ -1,11 +1,13 @@
 class BookmarksController < ApplicationController
   def new
     @bookmark = Bookmark.new
+    @tags = TagCloud.all
     render :new
   end
 
   def create
     @bookmark = Bookmark.new
+    @tags = TagCloud.all
     if @bookmark.update_attributes(bookmark_params)
       redirect_to root_path
     else
@@ -15,11 +17,13 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @tags = TagCloud.all
     render :edit
   end
 
   def update
     @bookmark = Bookmark.find(params[:id])
+    @tags = TagCloud.all
     if @bookmark.update_attributes(bookmark_params)
       redirect_to root_path
     else
