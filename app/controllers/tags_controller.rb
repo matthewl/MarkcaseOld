@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def show
     @bookmarks = Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC')
+    @tags = TagCloud.all
     render :show
   end
 

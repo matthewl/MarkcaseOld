@@ -19,8 +19,8 @@
         </div>
       </div>
       <div class="row">
-        <div id="sidebar" class="column col-4 text-right">
-          <ul class="nav flex-column">
+        <div id="sidebar" class="column col-4">
+          <ul class="nav flex-column text-right">
             <li class="nav-item">
               <%= link_to 'Home', root_path, class: 'nav-link' %>
             </li>
@@ -31,6 +31,14 @@
               <%= link_to 'Log out', logout_path, class: 'nav-link' %>
             </li>
           </ul>
+
+          <hr />
+
+          <p class="text-justify">
+            <% for tag in @tags %>
+              <%= link_to(tag['tag_name'], tag_path(tag['tag_name'])) %>
+            <% end %>
+          </p>
         </div>
         <div id="content" class="column col-7 offset-1">
           <%= yield %>
