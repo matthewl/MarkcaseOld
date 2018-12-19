@@ -1,24 +1,5 @@
 <% @bookmarks.each do |bookmark| %>
   <% cache ['v1', bookmark] do %>
     <%= render bookmark %>
-    <div class="bookmark mb-5">
-      <h4><%= link_to(bookmark.title, bookmark.url) %></h4>
-
-      <% if bookmark.description.present? %>
-        <p class="mt-3"><%= bookmark.description %></p>
-      <% end %>
-
-      <% if bookmark.tags.present? %>
-        <p class="text-muted">Tagged with:
-          <% bookmark.tags.each do |tag| %>
-            <span class="mr-1"><%= link_to(tag, tag_path(tag)) %></span>
-          <% end %>
-        </p>
-      <% end %>
-
-      <p class="text-muted">
-        <%= "Saved #{time_ago_in_words(bookmark.created_at)} ago" %> &middot; <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %>
-      </p>
-    </div>
   <% end %>
 <% end %>
