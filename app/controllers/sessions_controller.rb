@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   include SessionsHelper
   skip_before_action :verify_account, only: %i[new create]
+  skip_before_action :verify_public_site
 
   def new
     return redirect_to bookmarks_path if current_account

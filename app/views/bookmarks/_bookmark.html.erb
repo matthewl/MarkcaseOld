@@ -14,6 +14,6 @@
   <% end %>
 
   <p class="text-muted post-meta">
-    <%= "#{time_ago_in_words(bookmark.created_at)} ago" %> &middot; <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %>
+    <%= "#{time_ago_in_words(bookmark.created_at)} ago" %> <% if current_account %>&middot; <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %><% end %>
   </p>
 </div>

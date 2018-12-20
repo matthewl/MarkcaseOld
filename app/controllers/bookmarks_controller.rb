@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  skip_before_action :verify_public_site
   def new
     @bookmark = Bookmark.new
     @tags = TagCloud.all
