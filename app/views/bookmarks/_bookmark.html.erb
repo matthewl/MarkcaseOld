@@ -1,19 +1,27 @@
 <div class="bookmark mb-5">
-  <h2><%= link_to(bookmark.title, bookmark.url) %></h2>
+  <% cache ['v1', bookmark] do %>
+    <h2><%= link_to(bookmark.title, bookmark.url) %></h2>
 
-  <% if bookmark.description.present? %>
-    <p class="mt-3 post-body"><%= bookmark.description %></p>
-  <% end %>
-
-  <% if bookmark.tags.present? %>
-    <p class="text-muted post-meta">Tagged with:
-      <% bookmark.tags.each do |tag| %>
-        <span class="mr-1"><%= link_to(tag, tag_path(tag)) %></span>
-      <% end %>
+    <p class="text-muted post-meta">
+      <%= "#{time_ago_in_words(bookmark.created_at)} ago" %>
     </p>
+
+    <% if bookmark.description.present? %>
+      <p class="mt-3 post-body"><%= bookmark.description %></p>
+    <% end %>
+
+    <% if bookmark.tags.present? %>
+      <p class="text-muted post-meta">Tagged with:
+        <% bookmark.tags.each do |tag| %>
+          <span class="mr-1"><%= link_to(tag, tag_path(tag)) %></span>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 
   <p class="text-muted post-meta">
-    <%= "#{time_ago_in_words(bookmark.created_at)} ago" %> <% if current_account %>&middot; <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %><% end %>
+    <% if current_account %>
+      <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %>
+    <% end %>
   </p>
 </div>

@@ -1,7 +1,5 @@
 <% @bookmarks.each do |bookmark| %>
-  <% cache ['v1', bookmark] do %>
-    <%= render bookmark %>
-  <% end %>
+  <%= render bookmark %>
 <% end %>
 
 <%== pagy_bootstrap_responsive_nav(@pagy) %>
