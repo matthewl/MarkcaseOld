@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
+  include Pagy::Backend
+
   def show
-    @bookmarks = Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC')
+    @pagy, @bookmarks = pagy(Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
     @tags = TagCloud.all
     render :show
   end

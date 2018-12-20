@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def tag_cloud_css_class(tag_count)
     total_count = TagCloud.all_tags_count.first['count']
     percent = (tag_count.to_f / total_count.to_f) * 100

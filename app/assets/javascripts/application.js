@@ -12,5 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require pagy
 //= require turbolinks
 //= require_tree .
+
+window.addEventListener("turbolinks:load", Pagy.init);
