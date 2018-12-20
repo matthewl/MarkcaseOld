@@ -42,7 +42,7 @@
 
           <p class="text-justify">
             <% for tag in @tags %>
-              <%= link_to(tag['tag_name'], tag_path(tag['tag_name'])) %>
+              <%= link_to(tag['tag_name'], tag_path(tag['tag_name']), class: "#{tag_cloud_css_class(tag['count'])}") %>
             <% end %>
           </p>
         </div>
