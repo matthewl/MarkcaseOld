@@ -3,7 +3,7 @@
     <h2><%= link_to(bookmark.title, bookmark.url) %></h2>
 
     <p class="text-muted post-meta">
-      <% if bookmark.hidden? %>
+      <% unless bookmark.shared? %>
         <i class="fas fa-lock pr-1"></i>
       <% end %>
       <%= "#{time_ago_in_words(bookmark.created_at)} ago" %>

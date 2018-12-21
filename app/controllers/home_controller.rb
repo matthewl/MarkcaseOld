@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       if current_account
         pagy(Bookmark.all.order('created_at DESC'))
       else
-        pagy(Bookmark.visible.order('created_at DESC'))
+        pagy(Bookmark.shared.order('created_at DESC'))
       end
     @tags = TagCloud.all
   end

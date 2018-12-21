@@ -1,5 +1,5 @@
 class Bookmark < ApplicationRecord
-  scope :visible, -> { where(hidden: false) }
+  scope :shared, -> { where(shared: true) }
 
   validates :url, uniqueness: { case_sensitive: false }, presence: true
   validates :title, presence: true
