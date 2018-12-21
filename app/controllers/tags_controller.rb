@@ -3,7 +3,12 @@ class TagsController < ApplicationController
   skip_before_action :verify_account
 
   def show
-    @pagy, @bookmarks = pagy(Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
+    @pagy, @bookmarks =
+      if current_account
+        pagy(Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
+      else
+        pagy(Bookmark.visible.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
+      end
     @tags = TagCloud.all
     render :show
   end
