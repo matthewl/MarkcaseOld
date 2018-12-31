@@ -1,24 +1,5 @@
-# README
+# Welcome to Commonmarks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What is Commonmarks?
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Commonmarks is a self-hosted bookmarking web application written with Ruby on Rails. The idea behind Commonmarks isn't to compete with other bookmarking aplications, but to provide a self-hosted alternative that let's you save and organise your bookmarks.
