@@ -6,7 +6,7 @@
       <% unless bookmark.shared? %>
         <i class="fas fa-lock pr-1"></i>
       <% end %>
-      <%= "#{time_ago_in_words(bookmark.created_at)} ago" %>
+      <%= bookmark.created_at.strftime('%A, %b %d %Y') %>
     </p>
 
     <% if bookmark.description.present? %>

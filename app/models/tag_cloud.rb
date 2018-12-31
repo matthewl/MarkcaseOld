@@ -21,4 +21,8 @@ class TagCloud
       order by count DESC'
     @results = ActiveRecord::Base.connection.select_all(sql).to_hash
   end
+
+  def self.tag(name)
+    TagCloud.all.select { |tag| tag['tag_name'] == name }
+  end
 end

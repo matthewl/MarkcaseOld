@@ -1,5 +1,7 @@
 class Account < ApplicationRecord
   has_secure_password
+  has_many :bundles
+  accepts_nested_attributes_for :bundles, allow_destroy: true, reject_if: :all_blank
 
   validates :email, presence: true
   validates :password, presence: true, on: :create

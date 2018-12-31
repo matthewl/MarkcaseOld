@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_221239) do
+ActiveRecord::Schema.define(version: 2018_12_21_210023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,17 @@ ActiveRecord::Schema.define(version: 2018_12_20_221239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "tags", array: true
-    t.boolean "hidden", default: false
+    t.boolean "shared", default: true
+  end
+
+  create_table "bundles", force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "name"
+    t.text "tags"
+    t.boolean "shared", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_bundles_on_account_id"
   end
 
 end

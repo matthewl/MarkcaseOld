@@ -21,6 +21,6 @@ class PreferencesController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:public_site)
+    params.require(:account).permit(:public_site, bundles_attributes: [ :id, :name, :tags, :_destroy])
   end
 end

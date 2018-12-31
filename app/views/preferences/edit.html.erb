@@ -6,5 +6,44 @@
     </div>
   </div>
 
+  <hr />
+
+  <h4>Tag Bundles</h4>
+
+  <%= f.fields_for :bundles do |ff| %>
+    <div class="form-group">
+      <%= ff.label :name %>
+      <%= ff.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :tags %>
+      <%= ff.text_field :tags, class: 'form-control' %>
+    </div>
+
+    <% if ff.object.persisted? %>
+      <div class="form-group">
+        <div>
+          <%= ff.check_box :_destroy %>
+          <%= ff.label :_destroy, "Remove" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= link_to_add_fields 'Add Bundle', f, :bundles %>
+
+  <hr />
+
   <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
 <% end %>
+
+<script>
+$('form').on('click', '.add_fields', function(event) {
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+});
+</script
