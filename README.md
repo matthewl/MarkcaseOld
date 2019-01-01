@@ -13,6 +13,10 @@ Here's a little lightweight roadmap of what I am hoping to add in the next few m
 - An owner can reset their password
 - Tags can be sorted by frequency or name
 - Tag bundles can be shared or hidden
+- RSS feeds (falls in line with the public site setting, so is only enabled when the site is public)
+- Sitemap (again falls in line with the public site setting, only enabled when the site is public)
+- Starred bookmarks
+- Tag collection heading to show the selected tag and the number in the collection
 
 Looking a little further ahead, here's what I have in plan for the long term:
 
