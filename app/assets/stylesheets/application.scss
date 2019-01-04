@@ -21,6 +21,17 @@ html { font-family: 'Inter UI', sans-serif; }
   html { font-family: 'Inter UI var alt', sans-serif; }
 }
 
+@media (min-width: 48em) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 58em) {
+  html {
+    font-size: 16px;
+  }
+}
+
 .post-meta {
   margin-bottom: 0.5em;
 }
