@@ -21,6 +21,13 @@
       <%= ff.text_field :tags, class: 'form-control' %>
     </div>
 
+    <div class="form-group">
+      <div class="form-check">
+        <%= ff.check_box :shared, class: 'form-check-input' %>
+        <%= ff.label :shared, class: 'form-check-label' %>
+      </div>
+    </div>
+
     <% if ff.object.persisted? %>
       <div class="form-group">
         <div>

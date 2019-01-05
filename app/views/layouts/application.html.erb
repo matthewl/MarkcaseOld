@@ -75,23 +75,29 @@
             <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
           <% end %>
 
-
-          <% Account.first.bundles.each do |bundle| %>
+          <% bundles.each do |bundle| %>
             <hr />
-            <h5><strong><%= bundle.name %></strong></h5>
+            <% if bundle.shared? %>
+              <h5><strong><%= bundle.name %></strong></h5>
+            <% else %>
+              <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
+            <% end %>
+            
             <% bundle.tags.split(' ').each do |tag| %>
               <% tag_size = TagCloud.tag(tag) %>
               <% if tag_size.present? %>
-                <%= link_to(tag_size[0]['tag_name'], tag_path(tag_size[0]['tag_name']), class: "#{tag_cloud_css_class(tag_size[0]['count'])}") %>
+                <%= link_to(tag_size[0]['tag_name'], tag_path(tag_size[0]['tag_name']), class: "#{tag_cloud_css_class(tag_size[0]['count'])}") -%>
               <% end %>
             <% end %>
           <% end %>
 
           <hr />
 
-          <p class="text-justify d-none d-md-block">
+          <p class="text-right">Sort by <a id="sort_by_count" class="font-weight-bold" href="#" data-turbolinks="false">count</a> <a id="sort_by_name" href="#" data-turbolinks="false">name</a></p>
+
+          <p id="tags" class="text-justify d-none d-md-block">
             <% for tag in @tags %>
-              <%= link_to(tag['tag_name'], tag_path(tag['tag_name']), class: "#{tag_cloud_css_class(tag['count'])}") %>
+              <%= link_to(tag['tag_name'], tag_path(tag['tag_name']), class: "#{tag_cloud_css_class(tag['count'])}", data: { tag_count: tag['count'], tag_name: tag['tag_name'] }) -%>
             <% end %>
           </p>
         </div>
@@ -100,6 +106,11 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.querySelector("#sort_by_count").onclick = () => sortTagsByCount()
+      document.querySelector("#sort_by_name").onclick = () => sortTagsByName()
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
