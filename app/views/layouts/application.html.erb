@@ -83,12 +83,14 @@
               <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
             <% end %>
             
-            <% bundle.tags.split(' ').each do |tag| %>
-              <% tag_size = TagCloud.tag(tag) %>
-              <% if tag_size.present? %>
-                <%= link_to(tag_size[0]['tag_name'], tag_path(tag_size[0]['tag_name']), class: "#{tag_cloud_css_class(tag_size[0]['count'])}") -%>
+            <p class="tag-bundle text-justify d-none d-md-block">
+              <% for tag in @tags %>
+                <% tag_size = TagCloud.tag(tag['tag_name']) %>
+                <% if tag_size.present? && bundle.tags.include?(tag['tag_name']) %>
+                  <%= link_to(tag_size[0]['tag_name'], tag_path(tag_size[0]['tag_name']), class: "#{tag_cloud_css_class(tag_size[0]['count'])}") -%>
+                <% end %>
               <% end %>
-            <% end %>
+            </p>
           <% end %>
 
           <hr />
