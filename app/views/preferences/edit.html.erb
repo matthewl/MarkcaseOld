@@ -45,7 +45,7 @@
   <div class="form-group">
     <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
     <br />
-    <%= link_to rss_feed_url(auth_token: f.object.rss_auth_token) %>
+    <%= link_to(rss_feed_url(auth_token: f.object.rss_auth_token), rss_feed_url(auth_token: f.object.rss_auth_token)) %>
   </div>
 
   <hr />
