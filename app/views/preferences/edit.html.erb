@@ -42,6 +42,14 @@
 
   <hr />
 
+  <div class="form-group">
+    <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
+    <br />
+    <%= link_to rss_feed_url(auth_token: f.object.rss_auth_token) %>
+  </div>
+
+  <hr />
+
   <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
 <% end %>
 

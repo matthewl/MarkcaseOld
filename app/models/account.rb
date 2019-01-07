@@ -6,7 +6,9 @@ class Account < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true, on: :create
 
+  after_find { ensure_rss_auth_token_present }
   before_create { generate_token(:auth_token) }
+  before_create { generate_token(:rss_auth_token) }
 
   def remember
     generate_token(:auth_token)
@@ -15,5 +17,17 @@ class Account < ApplicationRecord
 
   def forget
     update_attribute(:auth_token, nil)
+  end
+
+  private
+
+  def generate_token(column)
+    self[column] = SecureRandom.urlsafe_base64
+  end
+
+  def ensure_rss_auth_token_present
+    return if rss_auth_token.present?
+    generate_token(:rss_auth_token)
+    save
   end
 end

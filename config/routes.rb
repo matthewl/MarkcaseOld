@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
+  get '/feed.rss', to: 'feeds#index', as: 'rss_feed'
+
   root to: 'home#index'
 end
