@@ -7,8 +7,8 @@ xml.rss version: '2.0' do
 
     @bookmarks.each do |bookmark|
       xml.item do
-        xml.title bookmark.title
-        xml.description "Bookmarked: #{link_to bookmark.title, bookmark.url} - #{bookmark.description}"
+        xml.title "Bookmarked: #{bookmark.title}"
+        xml.description bookmark.description
         xml.pubDate bookmark.created_at.to_s(:rfc822)
         xml.link bookmark.url
         xml.guid bookmark_url(bookmark)
