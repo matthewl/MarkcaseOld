@@ -110,8 +110,15 @@
     </div>
 
     <script>
-      document.querySelector("#sort_by_count").onclick = () => sortTagsByCount()
-      document.querySelector("#sort_by_name").onclick = () => sortTagsByName()
+      document.querySelector('#sort_by_count').onclick = function() {
+        sortTagsByCount()
+        return false 
+      }
+
+      document.querySelector("#sort_by_name").onclick = function() {
+         sortTagsByName()
+         return false
+      }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
