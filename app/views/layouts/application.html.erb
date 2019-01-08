@@ -70,7 +70,7 @@
     </header>
     <div class="container pt-5 mt-5">
       <div class="row">
-        <div id="sidebar" class="column col-12 col-md-4">
+        <div id="sidebar" class="column col-12 col-md-4 d-none d-md-block">
           <% if current_account %>
             <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
           <% end %>
@@ -83,7 +83,7 @@
               <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
             <% end %>
             
-            <p class="tag-bundle text-justify d-none d-md-block">
+            <p class="tag-bundle text-justify">
               <% for tag in @tags %>
                 <% tag_size = TagCloud.tag(tag['tag_name']) %>
                 <% if tag_size.present? && bundle.tags.include?(tag['tag_name']) %>
@@ -97,7 +97,7 @@
 
           <p class="text-right">Sort by <a id="sort_by_count" class="font-weight-bold" href="#" data-turbolinks="false">count</a> <a id="sort_by_name" href="#" data-turbolinks="false">name</a></p>
 
-          <p id="tags" class="text-justify d-none d-md-block">
+          <p id="tags" class="text-justify">
             <% for tag in @tags %>
               <%= link_to(tag['tag_name'], tag_path(tag['tag_name']), class: "#{tag_cloud_css_class(tag['count'])}", data: { tag_count: tag['count'], tag_name: tag['tag_name'] }) -%>
             <% end %>
