@@ -1,3 +1,5 @@
+<%= render partial: 'shared/heading', locals: { title: params[:name] } %>
+
 <% @bookmarks.each do |bookmark| %>
   <%= render bookmark %>
 <% end %>
