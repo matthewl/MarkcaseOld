@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.new
+    @bookmark = Bookmark.new(account_id: current_account.id)
     @tags = TagCloud.all
     if @bookmark.update_attributes(bookmark_params)
       redirect_to root_path

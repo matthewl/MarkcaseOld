@@ -1,8 +1,11 @@
 class Account < ApplicationRecord
   has_secure_password
-  has_many :bundles
+
+  has_many :bookmarks, dependent: :destroy
+  has_many :bundles, dependent: :destroy
   accepts_nested_attributes_for :bundles, allow_destroy: true, reject_if: :all_blank
 
+  validates :login, presence: true
   validates :email, presence: true
   validates :password, presence: true, on: :create
 

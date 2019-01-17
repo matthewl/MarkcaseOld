@@ -1,0 +1,27 @@
+<h2 class="mt-5">Commonmarks Setup</h2>
+
+<hr />
+
+<%= form_for @account, url: start_path do |f| %>
+  <div class="form-group">
+    <%= f.label 'Your login' %>
+    <%= f.text_field :login, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Your email' %>
+    <%= f.text_field :email, class: 'form-control', type: 'email' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Your password' %>
+    <%= f.text_field :password, class: 'form-control', type: 'password' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Confirm your password' %>
+    <%= f.text_field :password_confirmation, class: 'form-control', type: 'password' %>
+  </div>
+
+  <%= f.button 'Create account', class: 'btn btn-default btn-primary btn-block' %>
+<% end %>
