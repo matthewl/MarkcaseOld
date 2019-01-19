@@ -1,4 +1,6 @@
 class Bookmark < ApplicationRecord
+  acts_as_taggable
+
   scope :shared, -> { where(shared: true) }
 
   belongs_to :account
