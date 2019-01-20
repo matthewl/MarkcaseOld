@@ -15,7 +15,7 @@ class BookmarksTest < ApplicationSystemTestCase
     fill_in 'bookmark_title', with: 'ACME stuff'
     fill_in 'bookmark_url', with: 'http://acme.net'
     fill_in 'bookmark_description', with: 'For all your needs!'
-    fill_in 'bookmark_tags', with: 'acme stuff'
+    fill_in 'bookmark_tag_list', with: 'acme stuff'
     click_on 'Save'
 
     assert_text 'acme'
@@ -31,7 +31,7 @@ class BookmarksTest < ApplicationSystemTestCase
     fill_in 'bookmark_title', with: 'ACME back catalogue'
     fill_in 'bookmark_url', with: 'http://acme.net'
     fill_in 'bookmark_description', with: 'For all your road runner catching need!'
-    fill_in 'bookmark_tags', with: 'acme roadrunner'
+    fill_in 'bookmark_tag_list', with: 'acme roadrunner'
     click_on 'Save'
 
     assert_text 'acme'

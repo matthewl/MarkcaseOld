@@ -84,10 +84,9 @@
             <% end %>
             
             <p class="tag-bundle text-justify">
-              <% for tag in @tags %>
-                <% tag_size = TagCloud.tag(tag['tag_name']) %>
-                <% if tag_size.present? && bundle.tags.include?(tag['tag_name']) %>
-                  <%= link_to(tag_size[0]['tag_name'], tag_path(tag_size[0]['tag_name']), class: "#{tag_cloud_css_class(tag_size[0]['count'])}") -%>
+              <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
+                <% if bundle.tags.include?(tag.name) %>
+                  <%= link_to(tag.name, tag_path(tag.name), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
                 <% end %>
               <% end %>
             </p>
@@ -98,8 +97,8 @@
           <p class="text-right">Sort by <a id="sort_by_count" class="font-weight-bold" href="#" data-turbolinks="false">count</a> <a id="sort_by_name" href="#" data-turbolinks="false">name</a></p>
 
           <p id="tags" class="text-justify">
-            <% for tag in @tags %>
-              <%= link_to(tag['tag_name'], tag_path(tag['tag_name']), class: "#{tag_cloud_css_class(tag['count'])}", data: { tag_count: tag['count'], tag_name: tag['tag_name'] }) -%>
+            <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
+              <%= link_to(tag.name, tag_path(tag.name), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
             <% end %>
           </p>
         </div>
