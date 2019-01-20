@@ -1,6 +1,6 @@
 namespace :app do
   desc %Q{ ›› Migrate tags to acts_as_taggable }
-  task :migrate_tags :environment do
+  task migrate_tags: :environment do
     if Bookmark.column_names.include?('old_tags')
       Bookmark.all.each do |bookmark|
         puts "Bookmark ##{bookmark.id}, tags: #{bookmark.old_tags}"
