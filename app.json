@@ -1,0 +1,34 @@
+{
+  "name": "Commonmarks",
+  "description": "An open source bookmarking app",
+  "repository": "https://github.com/matthewl/Commonmarks",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["ruby", "rails", "postgresql"],
+  "addons": [
+    "heroku-postgresql",
+    {
+      "plan": "hobby-dev",
+      "as": "DATABASE"
+    },
+    "heroku-redis",
+    {
+      "plan": "hobby-dev",
+      "as": "REDIS"
+      
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "Free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  {
+  "success_url": "/start"
+  }
+}

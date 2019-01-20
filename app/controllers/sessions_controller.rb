@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    account = Account.find_by(email: params[:email])
+    account = Account.find_by(login: params[:login])
 
     if valid_account!(account)
       log_in account

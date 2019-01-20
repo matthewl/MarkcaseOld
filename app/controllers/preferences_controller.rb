@@ -23,7 +23,7 @@ class PreferencesController < ApplicationController
   end
 
   def find_tags
-    @tags = TagCloud.all
+    @tags = find_tags_for_cloud
   end
 
   def account_params

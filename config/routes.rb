@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :bookmarks, except: :index
   resources :sessions
 
+  get '/start' => 'start#new'
+  post '/start' => 'start#create'
+
   get '/preferences' => 'preferences#edit'
   patch '/preferences' => 'preferences#update'
 

@@ -24,7 +24,7 @@
 
   <p class="text-muted post-meta">
     <% if current_account %>
-      <%= link_to('Edit', edit_bookmark_path(bookmark)) %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %>
+      <%= link_to('Edit', edit_bookmark_path(bookmark), id: "edit_bookmark_#{bookmark.id}") %> &middot; <%= link_to 'Delete', bookmark_path(bookmark.id), method: :delete, id: "delete_bookmark_#{bookmark.id}", data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{bookmark.title}", role: 'button' %>
     <% end %>
   </p>
 </div>
