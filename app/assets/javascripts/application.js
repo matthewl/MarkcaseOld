@@ -19,20 +19,20 @@
 window.addEventListener("turbolinks:load", Pagy.init);
 
 function sortTagsByCount() {
-  var tags = document.querySelectorAll("[data-tag-count]");
+  var tags = document.querySelectorAll("#tags > [data-tag-count]");
   var tagsArray = Array.from(tags);
   let sortedTags = tagsArray.sort(sortedByCount);
   sortedTags.forEach(e => document.querySelector("#tags").appendChild(e));
-  document.querySelectorAll("[data-tag-count]").forEach(e => e.insertAdjacentHTML('beforebegin', '        '));
+  document.querySelectorAll("#tags > [data-tag-count]").forEach(e => e.insertAdjacentHTML('beforebegin', '        '));
   toggleSortOptions();
 }
 
 function sortTagsByName() {
-  var tags = document.querySelectorAll("[data-tag-name]");
+  var tags = document.querySelectorAll("#tags > [data-tag-name]");
   var tagsArray = Array.from(tags);
   let sortedTags = tagsArray.sort(sortedByName);
   sortedTags.forEach(e => document.querySelector("#tags").appendChild(e));
-  document.querySelectorAll("[data-tag-name]").forEach(e => e.insertAdjacentHTML('beforebegin', '        '));
+  document.querySelectorAll("#tags > [data-tag-name]").forEach(e => e.insertAdjacentHTML('beforebegin', '        '));
   toggleSortOptions();
 }
 

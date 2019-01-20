@@ -1,14 +1,13 @@
 class BookmarksController < ApplicationController
+  before_action :find_tags, except: :destroy
   skip_before_action :verify_public_site
   def new
     @bookmark = Bookmark.new
-    @tags = TagCloud.all
     render :new
   end
 
   def create
     @bookmark = Bookmark.new(account_id: current_account.id)
-    @tags = TagCloud.all
     if @bookmark.update_attributes(bookmark_params)
       redirect_to root_path
     else
@@ -18,13 +17,11 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
-    @tags = TagCloud.all
     render :edit
   end
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    @tags = TagCloud.all
     if @bookmark.update_attributes(bookmark_params)
       redirect_to root_path
     else
@@ -40,7 +37,11 @@ class BookmarksController < ApplicationController
 
   private
 
+  def find_tags
+    @tags = find_tags_for_cloud
+  end
+
   def bookmark_params
-    params.require(:bookmark).permit(:title, :description, :url, :tags, :shared)
+    params.require(:bookmark).permit(:title, :description, :url, :tag_list, :shared)
   end
 end
