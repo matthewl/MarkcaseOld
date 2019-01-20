@@ -6,9 +6,9 @@ class TagsController < ApplicationController
     @tags = find_tags_for_cloud
     @pagy, @bookmarks =
       if current_account
-        pagy(Bookmark.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
+        pagy(current_account.bookmarks.tagged_with(params[:name]).order('created_at DESC'))
       else
-        pagy(Bookmark.shared.where("'#{params[:name]}' = ANY (tags)").order('created_at DESC'))
+        pagy(current_account.bookmarks.shared.tagged_with(params[:name]).order('created_at DESC'))
       end
     render :show
   end
