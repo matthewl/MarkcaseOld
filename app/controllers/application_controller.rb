@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :verify_public_site
 
   def find_tags_for_cloud
-    current_account.bookmarks.counted_tags
+    if current_account.nil?
+      Account.first.bookmarks.counted_tags
+    else
+      current_account.bookmarks.counted_tags
+    end
   end
 
   private
