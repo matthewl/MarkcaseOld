@@ -8,7 +8,7 @@ class TagsController < ApplicationController
       if current_account
         pagy(current_account.bookmarks.tagged_with(params[:name]).order('created_at DESC'))
       else
-        pagy(current_account.bookmarks.shared.tagged_with(params[:name]).order('created_at DESC'))
+        pagy(Account.first.bookmarks.shared.tagged_with(params[:name]).order('created_at DESC'))
       end
     render :show
   end
