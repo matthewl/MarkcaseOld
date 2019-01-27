@@ -9,6 +9,8 @@ class Account < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true, on: :create
 
+  attr_accessor :single_account
+
   after_find { ensure_rss_auth_token_present }
   before_create { generate_token(:auth_token) }
   before_create { generate_token(:rss_auth_token) }
