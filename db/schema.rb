@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_124444) do
+ActiveRecord::Schema.define(version: 2019_01_27_160347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 2019_01_19_124444) do
     t.index ["account_id"], name: "index_bundles_on_account_id"
   end
 
-<<<<<<< HEAD
-=======
+  create_table "settings", force: :cascade do |t|
+    t.boolean "single_account", default: true
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -75,6 +77,5 @@ ActiveRecord::Schema.define(version: 2019_01_19_124444) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
->>>>>>> 4c17d6bf873dba53618753c15a4e6913830ebb06
   add_foreign_key "bookmarks", "accounts"
 end

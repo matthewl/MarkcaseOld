@@ -7,14 +7,14 @@ class SetupTest < ApplicationSystemTestCase
     Account.first.destroy
 
     # Goto the root path.
-    visit start_url
+    visit new_setup_url
 
     # Fill in the setup form.
     fill_in 'account_login', with: 'jennifer'
     fill_in 'account_email', with: 'jennifer@acme.net'
     fill_in 'account_password', with: 'password'
     fill_in 'account_password_confirmation', with: 'password'
-    click_on 'Create account'
+    click_on 'Complete setup'
 
     assert_selector '.btn-primary', text: 'New bookmark'
 
@@ -33,7 +33,7 @@ class SetupTest < ApplicationSystemTestCase
     assert_text 'For all your needs!'
 
     # And now the setup form is inaccessible.
-    visit start_url
+    visit new_setup_url
 
     assert_text 'acme'
     assert_text 'stuff'

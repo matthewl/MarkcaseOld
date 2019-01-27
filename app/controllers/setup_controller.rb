@@ -1,11 +1,11 @@
-class StartController < ApplicationController
+class SetupController < ApplicationController
   include SessionsHelper
   skip_before_action :verify_account, only: %i[new create]
   skip_before_action :verify_public_site
 
   def new
     verify_setup_complete; return if performed?
-    @account = Account.new
+    @account = Account.new(single_account: true)
     render :new, layout: 'blank'
   end
 
@@ -13,6 +13,7 @@ class StartController < ApplicationController
     verify_setup_complete; return if performed?
     @account = Account.new
     if @account.update_attributes(account_params)
+      Settings.create(single_account: true)
       log_in @account
       remember(@account)
       redirect_to root_path
@@ -30,6 +31,10 @@ class StartController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:login, :email, :password, :password_confirmation)
+    params
+      .require(:account)
+      .permit(
+        :login, :email, :password, :password_confirmation
+      )
   end
 end
