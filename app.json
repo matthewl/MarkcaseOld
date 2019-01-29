@@ -15,7 +15,8 @@
       "plan": "hobby-dev",
       "as": "REDIS"
       
-    }
+    },
+    "mailgun:starter"
   ],
   "formation": {
     "web": {
