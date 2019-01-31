@@ -2,7 +2,7 @@
   "name": "Commonmarks",
   "description": "An open source bookmarking app",
   "repository": "https://github.com/matthewl/Commonmarks",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "logo": "http://bookmarks.matthewlang.net/commonmarks_logo.png",
   "keywords": ["ruby", "rails", "postgresql"],
   "addons": [
     {
