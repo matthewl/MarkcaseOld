@@ -47,6 +47,6 @@ class BookmarksTest < ApplicationSystemTestCase
     assert_no_text 'acme'
     assert_no_text 'roadrunner'
     assert_no_text 'ACME back catalogue'
-    assert_no_text 'For all your road runner catching need!'    
+    assert_no_text 'For all your road runner catching need!'
   end
 end

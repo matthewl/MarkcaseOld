@@ -1,0 +1,16 @@
+<%= form_for(@account, url: password_reset_path(params[:id]), html: { class: 'form-password-reset'}) do |f| %>
+
+  <h2 class="form-password-reset-heading">Reset your password</h2>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+
+  <%= button_tag 'Update password', class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>

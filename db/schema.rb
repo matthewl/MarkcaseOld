@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_27_160347) do
+ActiveRecord::Schema.define(version: 2019_01_29_214645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_01_27_160347) do
     t.boolean "public_site", default: false
     t.string "rss_auth_token"
     t.string "login", null: false
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "bookmarks", force: :cascade do |t|

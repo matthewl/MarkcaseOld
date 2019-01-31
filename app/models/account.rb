@@ -24,6 +24,13 @@ class Account < ApplicationRecord
     update_attribute(:auth_token, nil)
   end
 
+  def send_password_reset(host)
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!(validate: false)
+    AccountMailer.password_reset(self, host).deliver_now
+  end
+
   private
 
   def generate_token(column)

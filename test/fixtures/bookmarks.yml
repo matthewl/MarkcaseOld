@@ -1,11 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  url: MyString
-  description: MyText
-
-two:
-  title: MyString
-  url: MyString
-  description: MyText
+health:
+  title: ACME Health
+  url: https://www.acme.health
+  description: Just another health website
+  shared: false

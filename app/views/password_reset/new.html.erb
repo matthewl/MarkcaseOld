@@ -1,0 +1,12 @@
+<%= form_tag("/password_reset", method: :post, class: "form-password-reset") do %>
+
+  <h2 class="form-password-reset-heading">Reset your password</h2>
+
+  <div class="form-group">
+    <%= label_tag :login, "Login" %>
+    <%= text_field_tag :login, params[:email], class: "form-control" %>
+  </div>
+
+  <%= button_tag "Reset password", class: "btn btn-lg btn-primary btn-block" %>
+
+<% end %>

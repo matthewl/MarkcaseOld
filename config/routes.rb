@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :bookmarks, except: :index
-  resources :password_resets, except: %i[index destroy]
+  resources :password_reset, except: %i[index destroy]
   resources :sessions
   resources :setup, only: %i[new create]
 
