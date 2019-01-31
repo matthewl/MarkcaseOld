@@ -5,16 +5,13 @@
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["ruby", "rails", "postgresql"],
   "addons": [
-    "heroku-postgresql",
     {
-      "plan": "hobby-dev",
+      "plan": "heroku-postgresql:hobby-dev",
       "as": "DATABASE"
     },
-    "heroku-redis",
     {
-      "plan": "hobby-dev",
+      "plan": "heroku-redis:hobby-dev",
       "as": "REDIS"
-      
     },
     "mailgun:starter"
   ],
