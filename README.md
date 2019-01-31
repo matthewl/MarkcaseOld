@@ -1,5 +1,7 @@
 # Welcome to Commonmarks
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## What is Commonmarks?
 
 Commonmarks is a self-hosted bookmarking web application written with Ruby on Rails. The idea behind Commonmarks isn't to compete with other bookmarking applications, but to provide a self-hosted alternative that let's you save and organise your bookmarks.

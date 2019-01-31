@@ -11,7 +11,7 @@ class PasswordResetTest < ApplicationSystemTestCase
     fill_in 'login', with: 'jennifer'
     click_on 'Reset password'
 
-    # Visit the url from the email
+    # Visit the url from the email.
     visit edit_password_reset_url(id: Account.find_by(login: 'jennifer').password_reset_token)
     fill_in 'account_password', with: 'password123'
     fill_in 'account_password_confirmation', with: 'password123'
