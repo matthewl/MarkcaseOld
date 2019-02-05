@@ -26,5 +26,5 @@
       "url": "heroku/ruby"
     }
   ],
-  "success_url": "/start"
+  "success_url": "/setup/new"
 }
