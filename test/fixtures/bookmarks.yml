@@ -1,5 +1,13 @@
 health:
+  account: jennifer
   title: ACME Health
   url: https://www.acme.health
   description: Just another health website
   shared: false
+
+art:
+  account: drew
+  title: ACME Art
+  url: https://www.acme.art
+  description: Just another art website
+  shared: true
