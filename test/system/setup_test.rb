@@ -4,7 +4,7 @@ require 'application_system_test_case'
 class SetupTest < ApplicationSystemTestCase
   test 'setting up the application' do
     # Remove all test accounts, bookmarks and bundles.
-    Account.first.destroy
+    Account.all.destroy_all
 
     # Goto the root path.
     visit new_setup_url
