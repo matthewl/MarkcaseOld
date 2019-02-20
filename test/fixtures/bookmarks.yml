@@ -5,6 +5,13 @@ health:
   description: Just another health website
   shared: false
 
+literature:
+  account: jennifer
+  title: ACME Literature
+  url: https://www.acme.literature
+  description: Just another literature website
+  shared: true
+
 art:
   account: drew
   title: ACME Art

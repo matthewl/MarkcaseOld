@@ -3,6 +3,8 @@ require 'application_system_test_case'
 
 class BookmarksTest < ApplicationSystemTestCase
   test 'the bookmark lifecycle' do
+    accounts(:drew).destroy
+    
     # Let's login first.
     visit login_url
     fill_in 'inputLogin', with: 'jennifer'
