@@ -3,3 +3,9 @@ jennifer:
   login: jennifer
   password_digest: <%= default_password_digest %>
   public_site: true
+
+drew:
+  email: drew@acme.net
+  login: drew
+  password_digest: <%= default_password_digest %>
+  public_site: false

@@ -42,7 +42,7 @@ class PasswordResetControllerTest < ActionController::TestCase
 
     put :update, params: { id: account.password_reset_token, account: account_params }
 
-    assert_select 'h2', 'Set your password'
+    assert_select 'h2', 'Reset your password'
   end
 
   test 'update action with an expired password token redirects' do
