@@ -1,8 +1,8 @@
 {
-  "name": "Commonmarks",
+  "name": "Markcase",
   "description": "An open source bookmarking app",
-  "repository": "https://github.com/matthewl/Commonmarks",
-  "logo": "http://bookmarks.matthewlang.net/commonmarks_logo.png",
+  "repository": "https://github.com/matthewl/Markcase",
+  "logo": "http://bookmarks.matthewlang.net/Markcase_logo.png",
   "keywords": ["ruby", "rails", "postgresql"],
   "addons": [
     {
