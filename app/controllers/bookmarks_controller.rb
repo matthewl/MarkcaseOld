@@ -19,12 +19,12 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_account.bookmarks.find(params[:id])
     render :edit
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_account.bookmarks.find(params[:id])
     if @bookmark.update_attributes(bookmark_params)
       redirect_to bookmarks
     else
@@ -33,7 +33,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    bookmark = Bookmark.find(params[:id])
+    bookmark = current_account.bookmarks.find(params[:id])
     bookmark.delete
     redirect_to bookmarks
   end
