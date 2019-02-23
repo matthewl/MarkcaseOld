@@ -65,7 +65,7 @@ class BookmarksControllerTest < ActionController::TestCase
 
   test 'renders the edit form' do
     get :edit, params: { id: accounts(:jennifer).bookmarks.first.id }
-  
+
     assert_match 'Title', @response.body
     assert_match 'Url', @response.body
     assert_match 'Description', @response.body

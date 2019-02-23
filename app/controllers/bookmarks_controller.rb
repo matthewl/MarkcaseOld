@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :find_tags, except: :destroy
   skip_before_action :verify_public_site
-  
+
   def new
     @bookmark = Bookmark.new
     render :new
