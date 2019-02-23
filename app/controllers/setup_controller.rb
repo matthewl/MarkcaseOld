@@ -13,7 +13,7 @@ class SetupController < ApplicationController
     verify_setup_complete; return if performed?
     @account = Account.new
     if @account.update_attributes(account_params)
-      Settings.create(single_account: true)
+      Setting.create(single_account: true)
       log_in @account
       remember(@account)
       redirect_to root_path

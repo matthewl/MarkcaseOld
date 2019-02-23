@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
+  before_action :verify_single_account
   skip_before_action :verify_account, only: %i[new create]
   skip_before_action :verify_public_site
 
@@ -30,5 +31,9 @@ class SessionsController < ApplicationController
 
   def valid_account!(account)
     account&.authenticate(params[:password])
+  end
+
+  def verify_single_account
+    redirect_to home_index_path if !Setting.first.single_account?
   end
 end

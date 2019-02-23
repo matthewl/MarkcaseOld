@@ -15,4 +15,9 @@ class ActiveSupport::TestCase
   def signin_as_private_user
     log_in_as(accounts(:drew))
   end
+
+  def switch_to_single_tennant
+    accounts(:drew).destroy
+    settings(:global).update_attribute(:single_account, true)
+  end
 end

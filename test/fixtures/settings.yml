@@ -1,2 +1,2 @@
 global:
-  single_account: true
+  single_account: false

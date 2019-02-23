@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   skip_before_action :verify_account
 
   def index
-    if Settings.first.single_account?
+    if Setting.first.single_account?
       @tags = find_tags_for_cloud
       @pagy, @bookmarks = current_account_bookmarks
       render :single
