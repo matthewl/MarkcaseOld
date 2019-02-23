@@ -13,6 +13,12 @@ class HomeControllerTest < ActionController::TestCase
   test 'renders the landing page for multi-account installations' do
     Settings.first.update_attribute(:single_account, false)
     get :index
-    assert_match 'This is a landing page.', @response.body
+    assert_match 'Welcome to Markcase', @response.body
+  end
+
+  test 'login redirects to the accounts page' do
+    Settings.first.update_attribute(:single_account, false)
+    post :create, params: { login: 'jennifer', password: 'password', remember_me: true }
+    assert_redirected_to  user_path(username: 'jennifer')
   end
 end
