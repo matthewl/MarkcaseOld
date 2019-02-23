@@ -14,4 +14,8 @@ class Bookmark < ApplicationRecord
   def tags=(values)
     super(values.split(' '))
   end
+
+  def tags_as_input
+    tags.sort.join(',')
+  end
 end
