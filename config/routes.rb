@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   resources :password_reset, except: %i[index destroy]
   resources :sessions, only: %i[new create destroy]
   get 'login' => 'sessions#new'
-  get 'logout' => 'sessions#destroy'
+  get 'logout' => 'home#destroy'
 
   resources :setup, only: %i[new create]
+  resources :home, only: :create
   root to: 'home#index'
 end

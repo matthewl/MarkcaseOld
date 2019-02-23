@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class BookmarksController < ApplicationController
   before_action :find_tags, except: :destroy
   skip_before_action :verify_public_site
+
   def new
     @bookmark = Bookmark.new
     render :new
@@ -9,30 +12,30 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(account_id: current_account.id)
     if @bookmark.update_attributes(bookmark_params)
-      redirect_to root_path
+      redirect_to bookmarks
     else
       render :new
     end
   end
 
   def edit
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_account.bookmarks.find(params[:id])
     render :edit
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_account.bookmarks.find(params[:id])
     if @bookmark.update_attributes(bookmark_params)
-      redirect_to root_path
+      redirect_to bookmarks
     else
       render :edit
     end
   end
 
   def destroy
-    bookmark = Bookmark.find(params[:id])
+    bookmark = current_account.bookmarks.find(params[:id])
     bookmark.delete
-    redirect_to root_path
+    redirect_to bookmarks
   end
 
   private
@@ -43,5 +46,10 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:title, :description, :url, :tag_list, :shared)
+  end
+
+  def bookmarks
+    return root_path if Setting.first.single_account?
+    user_path(username: current_account.login)
   end
 end

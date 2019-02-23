@@ -5,6 +5,7 @@ class SetupTest < ApplicationSystemTestCase
   test 'setting up the application' do
     # Remove all test accounts, bookmarks and bundles.
     Account.all.destroy_all
+    Setting.all.destroy_all
 
     # Goto the root path.
     visit new_setup_url

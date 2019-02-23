@@ -1,5 +1,5 @@
 json.version 'https://jsonfeed.org/version/1'
-json.title 'Commonmarks'
+json.title 'Markcase'
 json.home_page_url @base_url
 json.feed_url "#{@root_url}/feed.json"
 json.favicon "#{@root_url}/favicon.ico"
