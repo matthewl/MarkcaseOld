@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BookmarksController < ApplicationController
   before_action :find_tags, except: :destroy
   skip_before_action :verify_public_site
