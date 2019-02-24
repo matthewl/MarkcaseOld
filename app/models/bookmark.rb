@@ -16,6 +16,6 @@ class Bookmark < ApplicationRecord
   end
 
   def tags_as_input
-    tags.sort.join(',')
+    tags.sort.join(', ')
   end
 end

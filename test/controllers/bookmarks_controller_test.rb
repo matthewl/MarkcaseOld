@@ -31,7 +31,7 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_equal 'ACME Business', new_bookmark.title
     assert_equal 'https://acme.business', new_bookmark.url
     assert_equal 'Just another business website', new_bookmark.description
-    assert_equal 'business,website', new_bookmark.tags_as_input
+    assert_equal 'business, website', new_bookmark.tags_as_input
   end
 
   test 'create redirects to users bookmarks' do
@@ -55,7 +55,7 @@ class BookmarksControllerTest < ActionController::TestCase
         title: 'ACME Business',
         url: 'https://acme.business',
         description: 'Just another business website',
-        tag_list: 'business,website'
+        tag_list: 'business, website'
       }
     }
     post :create, params: new_params
@@ -79,7 +79,7 @@ class BookmarksControllerTest < ActionController::TestCase
         title: 'ACME Literature v2',
         url: 'https://acme.literature',
         description: 'Just a literature website',
-        tag_list: 'literature,website'
+        tag_list: 'literature, website'
       }
     }
     put :update, params: edit_params
@@ -88,7 +88,7 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_equal 'ACME Literature v2', new_bookmark.title
     assert_equal 'https://acme.literature', new_bookmark.url
     assert_equal 'Just a literature website', new_bookmark.description
-    assert_equal 'literature,website', new_bookmark.tags_as_input
+    assert_equal 'literature, website', new_bookmark.tags_as_input
   end
 
   test 'update redirects to users bookmarks' do

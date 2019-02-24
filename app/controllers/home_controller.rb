@@ -24,7 +24,11 @@ class HomeController < ApplicationController
       redirect_to user_path(username: account.login)
     else
       flash.now[:error] = t('authentication.error')
-      render :new, layout: 'blank'
+      if Setting.first.single_account?
+        render :single
+      else
+        render :landing, layout: 'landing'
+      end
     end
   end
 
