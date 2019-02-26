@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PreferencesController < ApplicationController
   include SessionsHelper
 
@@ -10,7 +12,7 @@ class PreferencesController < ApplicationController
 
   def update
     if @account.update_attributes(account_params)
-      redirect_to root_path
+      redirect_to bookmarks
     else
       render :edit
     end
@@ -27,6 +29,16 @@ class PreferencesController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:public_site, bundles_attributes: %i[id name tags shared _destroy])
+    params
+      .require(:account)
+      .permit(
+        :login, :email, :public_site,
+        bundles_attributes: %i[id name tags shared _destroy]
+      )
+  end
+
+  def bookmarks
+    return root_path if Setting.first.single_account?
+    user_path(username: current_account.login)
   end
 end
