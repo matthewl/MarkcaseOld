@@ -5,8 +5,8 @@ class Account < ApplicationRecord
   has_many :bundles, dependent: :destroy
   accepts_nested_attributes_for :bundles, allow_destroy: true, reject_if: :all_blank
 
-  validates :login, presence: true
-  validates :email, presence: true
+  validates :login, uniqueness: { case_sensitive: false }, presence: true
+  validates :email, uniqueness: { case_sensitive: false }, presence: true
   validates :password, presence: true, on: :create
 
   attr_accessor :single_account

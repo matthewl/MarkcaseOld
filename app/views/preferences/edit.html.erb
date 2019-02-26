@@ -1,6 +1,33 @@
 <%= render partial: 'shared/heading', locals: { title: 'Preferences' } %>
 
 <%= form_for @account, url: { action: 'update' }, html: { class: 'settings_form' } do |f| %>
+  <h4>Account</h4>
+
+  <div class="form-group">
+    <%= f.label :login %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.text_field :login, class: 'form-control' %>
+        <small class="form-text text-danger">
+          <%= f.object.errors.messages[:login].join(',') %>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.text_field :email, class: 'form-control', type: 'email' %>
+        <small class="form-text text-danger">
+          <%= f.object.errors.messages[:email].join(',') %>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mt-5">Privacy</h4>
 
   <div class="form-group">
     <div class="form-check">
@@ -9,17 +36,13 @@
     </div>
   </div>
 
-  <hr />
-
   <div class="form-group">
     <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
     <br />
     <%= link_to(rss_feed_url(auth_token: f.object.rss_auth_token), rss_feed_url(auth_token: f.object.rss_auth_token)) %>
   </div>
 
-  <hr />
-
-  <h4>Tag Bundles</h4>
+  <h4 class="mt-5">Tag bundles</h4>
 
   <%= f.fields_for :bundles do |ff| %>
     <div class="form-group">
@@ -57,11 +80,11 @@
 <% end %>
 
 <script>
-$('form').on('click', '.add_fields', function(event) {
-  var regexp, time;
-  time = new Date().getTime();
-  regexp = new RegExp($(this).data('id'), 'g');
-  $(this).before($(this).data('fields').replace(regexp, time));
-  return event.preventDefault();
-});
+  $('form').on('click', '.add_fields', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
 </script>
