@@ -52,15 +52,19 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <%= link_to 'Home', root_path, class: 'nav-link' %>
-              </li>
               <% if current_account %>
+                <li class="nav-item active">
+                  <%= link_to 'Home', user_path(username: current_account.login), class: 'nav-link' %>
+                </li>
                 <li class="nav-item">
                   <%= link_to 'Preferences', preferences_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'Log out', logout_path, class: 'nav-link' %>
+                </li>
+              <% else %>
+                <li class="nav-item active">
+                  <%= link_to 'Home', root_path, class: 'nav-link' %>
                 </li>
               <% end %>
             </ul>
