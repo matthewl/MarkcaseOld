@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  include Pagy::Backend
   include SessionsHelper
-  skip_before_action :verify_account
 
   def index
-    if Setting.first.single_account?
-      @tags = find_tags_for_cloud
-      @pagy, @bookmarks = current_account_bookmarks
-      render :single
-    else
-      render :landing, layout: 'landing'
-    end
+    render :index, layout: 'landing'
   end
 
   def create
@@ -24,23 +16,11 @@ class HomeController < ApplicationController
       redirect_to user_path(username: account.login)
     else
       flash.now[:error] = t('authentication.error')
-      if Setting.first.single_account?
-        render :single
-      else
-        render :landing, layout: 'landing'
-      end
+      render :index, layout: 'landing'
     end
   end
 
   private
-
-  def current_account_bookmarks
-    if current_account
-      pagy(Bookmark.all.order('created_at DESC'))
-    else
-      pagy(Bookmark.shared.order('created_at DESC'))
-    end
-  end
 
   def valid_account!(account)
     account&.authenticate(params[:password])

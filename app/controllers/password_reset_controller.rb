@@ -1,6 +1,5 @@
 class PasswordResetController < ApplicationController
   layout 'blank'
-  skip_before_action :verify_account
   before_action :find_account_by_reset_token, only: %i[edit update]
 
   def new; end

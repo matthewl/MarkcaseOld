@@ -5,6 +5,7 @@ class Bookmark < ApplicationRecord
 
   scope :shared, -> { where(shared: true) }
   scope :counted_tags, -> { tag_counts_on(:tags).sort_by(&:taggings_count).reverse }
+  scope :for_feeds, -> { where(shared: true).order('created_at DESC').limit(25) }
 
   belongs_to :account
 

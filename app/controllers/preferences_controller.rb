@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-class PreferencesController < ApplicationController
+class PreferencesController < AuthenticatedController
   include SessionsHelper
 
   before_action :find_account, :find_tags
-  skip_before_action :verify_public_site
 
   def edit
     render :edit
@@ -25,7 +24,7 @@ class PreferencesController < ApplicationController
   end
 
   def find_tags
-    @tags = find_tags_for_cloud
+    @tags = find_tags_for_cloud(current_account)
   end
 
   def account_params

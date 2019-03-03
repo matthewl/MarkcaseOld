@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resources :users, only: :index
   get '/u::username', to: 'users#show', as: 'user'
+  get '/feeds/u::username/feed.rss', to: 'feeds#show', as: 'feed', constraints: { format: /rss/ }
 
   resources :bookmarks, except: :index
   get '/preferences' => 'preferences#edit'
   patch '/preferences' => 'preferences#update'
-  get '/tags/:name', to: 'tags#show', as: 'tag'
-  get '/feed.rss', to: 'feeds#index', as: 'rss_feed'
+  get '/u::username/tag/:name', to: 'tags#show', as: 'tag'
+
 
   resources :password_reset, except: %i[index destroy]
   resources :sessions, only: %i[new create destroy]
