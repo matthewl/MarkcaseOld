@@ -75,7 +75,14 @@
     <div class="container pt-5 mt-5">
       <div class="row">
         <div id="sidebar" class="column col-12 col-md-4 d-none d-md-block">
+          <p><%= @account.login %> <%= " &middot; #{@account.bookmarks.count} #{'bookmark'.pluralize(@account.bookmarks.count)}".html_safe if @account.bookmarks.present? %></p>
+          <% if @account.public_site? %>
+            <p class="small">Subscribe to my <%= link_to 'bookmarks feed', feed_url(username: @account.login) %> (rss) </p>
+          <% end %>
+
           <% if current_account %>
+            <hr />
+
             <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
           <% end %>
 
@@ -90,7 +97,7 @@
             <p class="tag-bundle text-justify">
               <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
                 <% if bundle.tags.include?(tag.name) %>
-                  <%= link_to(tag.name, tag_path(tag.name), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
+                  <%= link_to(tag.name, tag_path(name: tag.name, username: @account.login), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
                 <% end %>
               <% end %>
             </p>
@@ -102,7 +109,7 @@
 
           <p id="tags" class="text-justify">
             <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
-              <%= link_to(tag.name, tag_path(tag.name), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
+              <%= link_to(tag.name, tag_path(name: tag.name, username: @account.login), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
             <% end %>
           </p>
         </div>

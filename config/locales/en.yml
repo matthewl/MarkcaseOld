@@ -3,3 +3,5 @@ en:
     reset: Your password has been reset.
     reset_expired: Password reset token has expired.
     reset_sent: We've sent you instructions to reset your password.
+  feed:
+    not_found:
