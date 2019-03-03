@@ -16,7 +16,7 @@
     <% if bookmark.tags.present? %>
       <p class="text-muted post-meta">Tagged with:
         <% bookmark.tags.each do |tag| %>
-          <span class="mr-1"><%= link_to(tag, tag_path(tag.name)) %></span>
+          <span class="mr-1"><%= link_to(tag, tag_path(name: tag.name, username: @account.login)) %></span>
         <% end %>
       </p>
     <% end %>

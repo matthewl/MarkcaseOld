@@ -48,21 +48,6 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_redirected_to user_path(username: accounts(:jennifer).login)
   end
 
-  test 'create redirects to the root path for single tennants' do
-    switch_to_single_tennant
-    new_params = {
-      bookmark: {
-        title: 'ACME Business',
-        url: 'https://acme.business',
-        description: 'Just another business website',
-        tag_list: 'business, website'
-      }
-    }
-    post :create, params: new_params
-
-    assert_redirected_to root_path
-  end
-
   test 'renders the edit form' do
     get :edit, params: { id: accounts(:jennifer).bookmarks.first.id }
 
@@ -106,22 +91,6 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_redirected_to user_path(username: accounts(:jennifer).login)
   end
 
-  test 'update redirects to root path for single tennants' do
-    switch_to_single_tennant
-    edit_params = {
-      id: bookmarks(:literature).id,
-      bookmark: {
-        title: 'ACME Literature v2',
-        url: 'https://acme.literature',
-        description: 'Just a literature website',
-        tag_list: 'literature,website'
-      }
-    }
-    put :update, params: edit_params
-
-    assert_redirected_to root_path
-  end
-
   test 'deletes an existing bookmark' do
     delete_params = { id: bookmarks(:health).id }
 
@@ -136,14 +105,5 @@ class BookmarksControllerTest < ActionController::TestCase
     delete :destroy, params: delete_params
 
     assert_redirected_to user_path(username: accounts(:jennifer).login)
-  end
-
-  test 'delete redirects to root path for single tennants' do
-    switch_to_single_tennant
-    delete_params = { id: bookmarks(:health).id }
-
-    delete :destroy, params: delete_params
-
-    assert_redirected_to root_path
   end
 end

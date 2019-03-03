@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-class BookmarksController < ApplicationController
+class BookmarksController < AuthenticatedController
   before_action :find_tags, except: :destroy
-  skip_before_action :verify_public_site
 
   def new
+    @account = current_account
     @bookmark = Bookmark.new
     render :new
   end
 
   def create
+    @account = current_account
     @bookmark = Bookmark.new(account_id: current_account.id)
     if @bookmark.update_attributes(bookmark_params)
       redirect_to bookmarks
@@ -19,11 +20,13 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+    @account = current_account
     @bookmark = current_account.bookmarks.find(params[:id])
     render :edit
   end
 
   def update
+    @account = current_account
     @bookmark = current_account.bookmarks.find(params[:id])
     if @bookmark.update_attributes(bookmark_params)
       redirect_to bookmarks
@@ -41,7 +44,7 @@ class BookmarksController < ApplicationController
   private
 
   def find_tags
-    @tags = find_tags_for_cloud
+    @tags = find_tags_for_cloud(current_account)
   end
 
   def bookmark_params
@@ -49,7 +52,6 @@ class BookmarksController < ApplicationController
   end
 
   def bookmarks
-    return root_path if Setting.first.single_account?
-    user_path(username: current_account.login)
+    return user_path(username: current_account.login)
   end
 end

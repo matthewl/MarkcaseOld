@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
   before_action :verify_single_account
-  skip_before_action :verify_account, only: %i[new create]
-  skip_before_action :verify_public_site
 
   def new
     return redirect_to bookmarks_path if current_account
@@ -15,7 +13,7 @@ class SessionsController < ApplicationController
     if valid_account!(account)
       log_in account
       params[:remember_me] == 'on' ? remember(account) : forget(account)
-      redirect_to root_path
+      redirect_to user_path(username: account.login)
     else
       flash.now[:error] = t('authentication.error')
       render :new, layout: 'blank'

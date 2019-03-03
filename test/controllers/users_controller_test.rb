@@ -10,12 +10,12 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'redirects to login page when account is private' do
     get :show, params: { username: accounts(:drew).login }
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test 'redirects to login page when account is not found' do
     get :show, params: { username: 'bob' }
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test 'does not redirect when it is our own user page' do
