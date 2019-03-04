@@ -1,4 +1,6 @@
 en:
+  authentication:
+   error: You have entered an invalid login or password.
   password:
     reset: Your password has been reset.
     reset_expired: Password reset token has expired.
