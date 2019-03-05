@@ -1,4 +1,6 @@
 en:
+  account:
+    destroyed: Your account has been deleted.
   authentication:
    error: You have entered an invalid login or password.
   password:
@@ -6,4 +8,4 @@ en:
     reset_expired: Password reset token has expired.
     reset_sent: We've sent you instructions to reset your password.
   feed:
-    not_found:
+    not_found: We couldn't a feed for that account.
