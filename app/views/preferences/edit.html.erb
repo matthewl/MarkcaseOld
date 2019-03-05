@@ -1,83 +1,106 @@
 <%= render partial: 'shared/heading', locals: { title: 'Preferences' } %>
 
-<%= form_for @account, url: { action: 'update' }, html: { class: 'settings_form' } do |f| %>
-  <h4>Account</h4>
-
-  <div class="form-group">
-    <%= f.label :login %>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.text_field :login, class: 'form-control' %>
-        <small class="form-text text-danger">
-          <%= f.object.errors.messages[:login].join(',') %>
-        </small>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.text_field :email, class: 'form-control', type: 'email' %>
-        <small class="form-text text-danger">
-          <%= f.object.errors.messages[:email].join(',') %>
-        </small>
-      </div>
-    </div>
-  </div>
-
-  <h4 class="mt-5">Privacy</h4>
-
-  <div class="form-group">
-    <div class="form-check">
-      <%= f.check_box :public_site, class: 'form-check-input' %>
-      <%= f.label :public_site, class: 'form-check-label' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
-    <br />
-    <%= link_to(feed_url(username: current_account.login, auth_token: f.object.rss_auth_token), feed_url(username: current_account.login, auth_token: f.object.rss_auth_token)) %>
-  </div>
-
-  <h4 class="mt-5">Tag bundles</h4>
-
-  <%= f.fields_for :bundles do |ff| %>
-    <div class="form-group">
-      <%= ff.label :name %>
-      <%= ff.text_field :name, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= ff.label :tags %>
-      <%= ff.text_field :tags, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <div class="form-check">
-        <%= ff.check_box :shared, class: 'form-check-input' %>
-        <%= ff.label :shared, class: 'form-check-label' %>
-      </div>
-    </div>
-
-    <% if ff.object.persisted? %>
+<div class="card mb-5">
+  <div class="card-body">
+    <h5 class="card-title">Account</h5>
+    <%= form_for @account, url: { action: 'update' }, html: { class: 'settings_form' } do |f| %>
       <div class="form-group">
-        <div>
-          <%= ff.check_box :_destroy %>
-          <%= ff.label :_destroy, "Remove" %>
+        <%= f.label :login %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :login, class: 'form-control' %>
+            <small class="form-text text-danger">
+              <%= f.object.errors.messages[:login].join(',') %>
+            </small>
+          </div>
         </div>
       </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :email, class: 'form-control', type: 'email' %>
+            <small class="form-text text-danger">
+              <%= f.object.errors.messages[:email].join(',') %>
+            </small>
+          </div>
+        </div>
+      </div>
+      <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
     <% end %>
-  <% end %>
+  </div>
+</div>
 
-  <%= link_to_add_fields 'Add Bundle', f, :bundles %>
+<div class="card mb-5">
+  <div class="card-body">
+    <h5 class="card-title">Privacy</h5>
+    <%= form_for @account, url: { action: 'update' }, html: { class: 'settings_form' } do |f| %>
+      <div class="form-group">
+        <div class="form-check">
+          <%= f.check_box :public_site, class: 'form-check-input' %>
+          <%= f.label :public_site, 'Public account', class: 'form-check-label' %>
+        </div>
+      </div>
 
-  <hr />
+      <div class="form-group">
+        <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
+        <br />
+        <%= link_to(feed_url(username: current_account.login, auth_token: f.object.rss_auth_token), feed_url(username: current_account.login, auth_token: f.object.rss_auth_token)) %>
+      </div>
+      <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
+    <% end %>
+  </div>
+</div>
 
-  <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
-<% end %>
+<div class="card mb-5">
+  <div class="card-body">
+    <h5 class="card-title">Bundles</h5>
+    <%= form_for @account, url: { action: 'update' }, html: { class: 'settings_form' } do |f| %>
+      <%= f.fields_for :bundles do |ff| %>
+        <div class="form-group">
+          <%= ff.label :name %>
+          <%= ff.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= ff.label :tags %>
+          <%= ff.text_field :tags, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <%= ff.check_box :shared, class: 'form-check-input' %>
+            <%= ff.label :shared, class: 'form-check-label' %>
+          </div>
+        </div>
+
+        <% if ff.object.persisted? %>
+          <div class="form-group">
+            <div>
+              <%= ff.check_box :_destroy %>
+              <%= ff.label :_destroy, "Remove" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= link_to_add_fields 'Add Bundle', f, :bundles %>
+
+      <hr />
+      
+      <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Delete Account</h5>
+    <p class="card-text">Deleting your account will remove all your data and is irreversible.</p>
+    <a href="#" class="btn btn-danger">Delete Account</a>
+  </div>
+</div>
 
 <script>
   $('form').on('click', '.add_fields', function(event) {
