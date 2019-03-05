@@ -86,7 +86,7 @@
             <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
           <% end %>
 
-          <% bundles.each do |bundle| %>
+          <% @account.bundles.each do |bundle| %>
             <hr />
             <% if bundle.shared? %>
               <h5><strong><%= bundle.name %></strong></h5>
