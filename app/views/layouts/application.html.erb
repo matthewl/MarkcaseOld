@@ -123,8 +123,8 @@
             <% end %>
           <% end %>
 
-          <% if current_account %>
-            <div class="d-none d-sm-block d-md-none">
+          <% if current_account && @account == current_account %>
+            <div class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
               <%= link_to 'New bookmark', new_bookmark_path, class: 'btn btn-primary btn-block' %>
               <hr />
             </div>
