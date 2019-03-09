@@ -48,7 +48,7 @@ class PasswordResetControllerTest < ActionController::TestCase
   test 'update action with an expired password token redirects' do
     account = accounts(:jennifer)
     account.send_password_reset('localhost:3000')
-    account.update_attribute(:password_reset_sent_at, 3.hours.ago)
+    account.update_attribute(:password_reset_sent_at, 14.hours.ago)
     account_params = { password: 'password', password_confirmation: 'password' }
 
     put :update, params: { id: account.password_reset_token, account: account_params }

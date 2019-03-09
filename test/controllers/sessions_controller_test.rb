@@ -11,6 +11,6 @@ class SessionsControllerTest < ActionController::TestCase
 
   test 'new session redirects to landing page for multi account installations' do
     get :new
-    assert_redirected_to home_index_path
+    assert_match 'Please sign in', @response.body
   end
 end

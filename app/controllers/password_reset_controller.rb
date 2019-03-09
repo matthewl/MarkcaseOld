@@ -17,7 +17,7 @@ class PasswordResetController < ApplicationController
   def edit; end
 
   def update
-    if @account.password_reset_sent_at < 2.hours.ago
+    if @account.password_reset_sent_at < 12.hours.ago
       redirect_to new_password_reset_path, alert: t('password.reset_expired')
     elsif valid_password? && @account.update_attributes(password_params)
       redirect_to root_url, notice: t('password.reset')
