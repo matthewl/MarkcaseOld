@@ -7,6 +7,18 @@ class AccountsControllerTest < ActionController::TestCase
     log_in_as(accounts(:jennifer))
   end
 
+  test 'renders the new page successfully' do
+    get :new
+    assert_response :success
+  end
+
+  test 'redirects to home page when single tennant' do
+    switch_to_single_tennant
+    get :new
+    assert_redirected_to root_path
+  end
+
+
   test 'deletes the account and all its bookmarks' do
     delete_params = { id: accounts(:jennifer).id }
 
