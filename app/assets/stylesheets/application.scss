@@ -49,13 +49,13 @@ html { font-family: 'Inter UI', sans-serif; }
 /*
  * Sign in page
  */
- .form-signin, .form-password-reset {
+ .form-signin, .form-password-reset, .form-create-account-heading {
   max-width: 400px;
   padding: 15px;
   margin: 0 auto;
 }
 .form-signin .form-signin-heading,
-.form-signin .form-password-reset-heading {
+.form-signin .form-password-reset-heading, .form-create-account-heading {
   margin-bottom: 10px;
   float:left;
 }

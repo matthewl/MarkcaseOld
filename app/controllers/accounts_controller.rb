@@ -4,10 +4,11 @@ class AccountsController < ApplicationController
 	include SessionsHelper
 
   def new
-    if Setting.first.single_account?
+    if Setting.first.single_account? || !FT.on?(:accepting_registrations)
       redirect_to root_path
     else
-      render :new
+      @account = Account.new
+      render :new, layout: 'blank'
     end
   end
 
@@ -17,7 +18,7 @@ class AccountsController < ApplicationController
   		log_in @account
   		redirect_to user_path(username: @account.login)
   	else
-  		render :new
+  		render :new, layout: 'blank'
   	end
 
   end

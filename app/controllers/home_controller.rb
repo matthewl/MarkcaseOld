@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   include SessionsHelper
 
   def index
+    @accepting_registrations = FT.on?(:accepting_registrations)
     render :index, layout: 'landing'
   end
 

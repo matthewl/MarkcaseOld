@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: true or <%= link_to 'Create your account', new_account_path %.
 
 require 'test_helper'
 
@@ -11,6 +11,25 @@ class AccountsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+
+  test 'creates a new account' do
+    new_params = {
+      account: {
+        login: 'ethan',
+        email: 'ethan@acme.net',
+        password: 'anotherrubbishpassword'
+      }
+    }
+
+    post :create, params: new_params
+    new_account = Account.last
+    assert_equal 'ethan', new_account.login
+    assert_equal 'ethan@acme.net', new_account.email
+    assert_equal 0, new_account.bookmarks.count
+  end
+  
+  test 'redirects to the account bookmarks after creation' do
+  end  
 
   test 'redirects to home page when single tennant' do
     switch_to_single_tennant
