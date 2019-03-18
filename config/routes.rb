@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :bookmarks, except: :index
   get '/preferences' => 'preferences#edit'
   patch '/preferences' => 'preferences#update'
-  resources :accounts, only: :destroy
+  resources :accounts, only: %i[new create destroy]
   
   resources :password_reset, except: %i[index destroy]
   resources :sessions, only: %i[new create destroy]

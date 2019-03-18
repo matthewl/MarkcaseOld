@@ -2,4 +2,6 @@
   <%= render bookmark %>
 <% end %>
 
-<%== pagy_bootstrap_responsive_nav(@pagy) %>
+<% if @bookmarks.present? %>
+  <%== pagy_bootstrap_responsive_nav(@pagy) %>
+<% end %>
