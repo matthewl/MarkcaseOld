@@ -3,11 +3,13 @@
   <div class="form-group">
     <%= f.label :login %>
     <%= f.text_field :login, class: 'form-control' %>
+    <%= error_message_for(@account, :login) %> 
   </div>
 
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
+    <%= error_message_for(@account, :email) %> 
   </div>
 
   <div class="form-group">
@@ -15,5 +17,11 @@
     <%= f.password_field :password, class: 'form-control' %>
   </div>
 
+  <hr />
+
   <%= f.button 'Create account', class: 'btn btn-default btn-primary' %> or <%= link_to 'Cancel', :back, id: 'cancel' %>
+
+  <hr />
+
+  <p>Registrations are only open for a limited time during the beta phase.</p>
 <% end %>

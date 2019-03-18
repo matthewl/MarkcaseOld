@@ -18,6 +18,7 @@ class AccountsController < ApplicationController
   		log_in @account
   		redirect_to user_path(username: @account.login)
   	else
+      puts @account.errors.inspect
   		render :new, layout: 'blank'
   	end
 

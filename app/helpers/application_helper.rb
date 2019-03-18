@@ -23,4 +23,8 @@ module ApplicationHelper
 
     'tag-size-0'
   end
+
+  def error_message_for(object, attribute, options = {})
+    content_tag(:small, object.errors.messages[attribute].join(','), class: 'form-text text-danger')
+  end
 end
