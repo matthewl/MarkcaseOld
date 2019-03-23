@@ -1,13 +1,15 @@
-<div id="content" class="col-md-5 offset-md-1">
+<div id="content" class="col-md-8">
   <h1>Welcome to Markcase</h1>
   <h3>A bookcase for your bookmarks</h3>          
 
   <hr />
 
-  
+  <p>Markcase is a simple bookmarking service with an emphasis on privacy. You can be as public or private as you want with your bookmarks. You can control the visibility of your account, your tag bundles and your bookmarks.</p>
+
+  <p>Markcase lets you bookmark from the browser without any fuss. The design is simple and lightweight.</p>
 </div>
 
-<div id="sidebar" class="col-md-5">
+<div id="sidebar" class="col-md-4">
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
@@ -34,14 +36,12 @@
   <hr/>
 
   <p>
-    <% if @accepting_registrations && !Setting.first.single_account? %>
-      <%= link_to 'Forgot your password?', new_password_reset_path %> or <%= link_to 'Create your account', new_account_path %>
-    <% else %>
-      <%= link_to 'Forgot your password?', new_password_reset_path %>
-    <% end %>
+    <%= link_to 'Forgot your password?', new_password_reset_path %>
   </p>
 
-  <hr />
-
-  <p>Registrations are only open for a limited time during the beta phase.</p>
+  <% if @accepting_registrations  && !Setting.first.single_account? %>
+    <hr />
+    <p><%= link_to 'Create your account', new_account_path %></p>
+    <p>Registrations are only open for a limited time during the beta phase.</p>
+  <% end %>
 </div>
