@@ -6,7 +6,7 @@
       <% unless bookmark.shared? %>
         <i class="fas fa-lock pr-1"></i>
       <% end %>
-      <%= bookmark.created_at.strftime('%A, %b %d %Y') %>
+      <%= link_to(bookmark.created_at.strftime('%A, %b %d %Y'), bookmark_path(id: bookmark.id)) %>
     </p>
 
     <% if bookmark.description.present? %>
