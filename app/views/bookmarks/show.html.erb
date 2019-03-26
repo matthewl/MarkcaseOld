@@ -1,0 +1,49 @@
+<div class="bookmark mb-5">
+  <% cache ['v1', @bookmark] do %>
+    <h2><%= link_to(@bookmark.title, @bookmark.url) %></h2>
+
+    <p class="text-muted post-meta">
+      <% unless @bookmark.shared? %>
+        <i class="fas fa-lock pr-1"></i>
+      <% end %>
+      <%= link_to(@bookmark.created_at.strftime('%A, %b %d %Y'), bookmark_path(@bookmark)) %>
+    </p>
+
+    <% if @bookmark.description.present? %>
+      <p class="mt-3 post-body"><%= @bookmark.description %></p>
+    <% end %>
+
+    <% if @bookmark.tags.present? %>
+      <p class="text-muted post-meta">Tagged with:
+        <% @bookmark.tags.each do |tag| %>
+          <span class="mr-1"><%= link_to(tag, tag_path(name: tag.name, username: @account.login)) %></span>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <p class="text-muted post-meta">
+    <% if current_account %>
+      <%= link_to('Edit', edit_bookmark_path(@bookmark), id: "edit_bookmark_#{@bookmark.id}") %> &middot; <%= link_to 'Delete', bookmark_path(@bookmark.id), method: :delete, id: "delete_bookmark_#{@bookmark.id}", data: { confirm: 'Are you sure?' }, title: "Delete bookmark: #{@bookmark.title}", role: 'button' %>
+    <% end %>
+  </p>
+
+  <% cache ['v1', @bookmark, 'host'] do %>
+    <hr />
+    <% if @bookmark.find_by_host.present? %>
+      <h4 class="mt-3">From the same host</h4>
+      <% @bookmark.find_by_host.each do |bookmark| %>
+        <p>
+          <%= link_to(bookmark.title, bookmark.url) %> &middot
+          <%= link_to(bookmark.created_at.strftime('%A, %b %d %Y'), bookmark_path(bookmark)) %>
+          <% if bookmark.tags.present? %>
+             &middot 
+            <% bookmark.tags.each do |tag| %>
+              <%= link_to(tag, tag_path(name: tag.name, username: @account.login)) %>
+            <% end %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
