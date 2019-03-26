@@ -28,7 +28,7 @@
     <% end %>
   </p>
 
-  <% cache ['v1', @bookmark, 'host'] do %>
+  <% cache ['v1', 'host', @bookmark] do %>
     <hr />
     <% if @bookmark.find_by_host.present? %>
       <h4 class="mt-3">From the same host</h4>

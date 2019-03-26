@@ -3,6 +3,11 @@
 class BookmarksController < AuthenticatedController
   before_action :find_tags, except: :destroy
 
+  def show
+    @account = current_account
+    @bookmark = current_account.bookmarks.find(params[:id])
+  end
+
   def new
     @account = current_account
     @bookmark = Bookmark.new

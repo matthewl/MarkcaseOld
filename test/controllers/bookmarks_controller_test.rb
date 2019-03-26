@@ -7,6 +7,14 @@ class BookmarksControllerTest < ActionController::TestCase
     log_in_as(accounts(:jennifer))
   end
 
+  test 'shows the book' do
+    get :show, params: { id: accounts(:jennifer).bookmarks.first.id }
+    
+    assert_match 'ACME Health', @response.body
+    assert_match 'www.acme.health', @response.body
+    assert_match 'Just another health website', @response.body
+  end
+
   test 'renders the new form' do
     get :new
 
