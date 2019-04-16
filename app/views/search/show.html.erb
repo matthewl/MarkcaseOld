@@ -1,0 +1,9 @@
+<%= render partial: 'shared/heading', locals: { title: humanize_search_results(@bookmarks.count, params[:query]) } %>
+
+<% @bookmarks.each do |bookmark| %>
+  <%= render bookmark %>
+<% end %>
+
+<% if @bookmarks.present? %>
+  <%== pagy_bootstrap_responsive_nav(@pagy) %>
+<% end %>

@@ -68,6 +68,13 @@
                 </li>
               <% end %>
             </ul>
+
+            <% if current_account %>
+              <%= form_tag search_path, method: :get, class: 'form-inline my-2 my-lg-0 pull-right', id: 'search-form' do %>
+                <%= text_field_tag :query, params[:query], class: 'form-control mr-sm-2' %>
+                <%= button_tag 'Search', class: 'btn btn-success my-2 my-sm-0', name: nil %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </nav>

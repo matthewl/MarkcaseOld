@@ -6,7 +6,8 @@ class Bookmark < ApplicationRecord
   scope :shared, -> { where(shared: true) }
   scope :counted_tags, -> { tag_counts_on(:tags).sort_by(&:taggings_count).reverse }
   scope :for_feeds, -> { where(shared: true).order('created_at DESC').limit(25) }
-  scope :by_host, ->(host, id) { where('url LIKE ?', "%#{host}%").order('created_at DESC').limit(5).where.not(id: id) }
+  scope :by_host, -> (host, id) { where('url LIKE ?', "%#{host}%").order('created_at DESC').limit(5).where.not(id: id) }
+  scope :search, -> (query) { where('title ILIKE :query OR url ILIKE :query OR description ILIKE :query', query: "%#{query}%")}
 
   belongs_to :account
 
