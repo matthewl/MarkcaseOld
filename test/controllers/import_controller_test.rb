@@ -10,7 +10,7 @@ class ImportControllerTest < ActionController::TestCase
     assert_redirected_to user_path(username: accounts(:jennifer).login)
   end
 
-  test 'renders the new form' do
+  test 'renders the new form when imports feature is enabled' do
     log_in_as(accounts(:drew))
     get :new
 
