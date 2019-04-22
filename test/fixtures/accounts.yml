@@ -9,3 +9,4 @@ drew:
   login: drew
   password_digest: <%= default_password_digest %>
   public_site: false
+  preview_features: true
