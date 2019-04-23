@@ -31,7 +31,7 @@
   <% cache ['v1', 'host', @bookmark] do %>
     <hr />
     <% if @bookmark.find_by_host.present? %>
-      <h4 class="mt-3 mb-3">From the same host</h4>
+      <h4 class="mt-3 mb-3">Bookmarks from the same host</h4>
       <% @bookmark.find_by_host.each do |bookmark| %>
         <h5><%= link_to(bookmark.title, bookmark.url) %></h5>
         <p>

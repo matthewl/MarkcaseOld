@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   patch '/preferences' => 'preferences#update'
   get '/search' => 'search#show'
   resources :accounts, only: %i[new create destroy]
+  get '/import', to: 'import#new'
+  post '/import', to: 'import#create'
   
   resources :password_reset, except: %i[index destroy]
   resources :sessions, only: %i[new create destroy]

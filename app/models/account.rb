@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
   has_secure_password
+  has_one_attached :import_file
 
   has_many :bookmarks, dependent: :destroy
   has_many :bundles, dependent: :destroy

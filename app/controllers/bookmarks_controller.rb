@@ -53,7 +53,9 @@ class BookmarksController < AuthenticatedController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:title, :description, :url, :tag_list, :shared)
+    params
+      .require(:bookmark)
+      .permit(:title, :description, :url, :tag_list, :shared)
   end
 
   def bookmarks
