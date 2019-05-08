@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/u::username', to: 'users#show', as: 'user'
   get '/u::username/tag/:name', to: 'tags#show', as: 'tag'
   get '/feeds/u::username/feed.rss', to: 'feeds#show', as: 'feed', constraints: { format: /rss/ }
+  get '/feeds/u::username/tag/:name/feed.rss', to: 'tag_feeds#show', as: 'tag_feed', constraints: { format: /rss/ }
 
   resources :bookmarks, except: :index
   get '/preferences' => 'preferences#edit'
