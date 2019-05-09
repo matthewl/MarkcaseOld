@@ -43,10 +43,19 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :rss_auth_token, 'Private RSS Feed:' %>
+      <div class="form-group pt-2">
+        <%= f.label :rss_auth_token, 'Private RSS feed:' %>
         <br />
         <%= link_to(feed_url(username: current_account.login, auth_token: f.object.rss_auth_token), feed_url(username: current_account.login, auth_token: f.object.rss_auth_token)) %>
+      </div>
+
+      <div class="form-group pt-2">
+        <%= f.label :rss_auth_token, 'Private RSS feed for tags:' %>
+        <br />
+        <%= link_to(tag_feed_url(username: current_account.login, name: 'books', auth_token: f.object.rss_auth_token), tag_feed_url(username: current_account.login, name: 'books', auth_token: f.object.rss_auth_token)) %>
+        <small class="form-text">
+          Using the same format as the link above, you can now subscribe to tags feeds when your account is private.
+        </small>
       </div>
       <%= f.button 'Save', class: 'btn btn-default btn-primary' %>
     <% end %>
@@ -83,6 +92,9 @@
             </div>
           </div>
         <% end %>
+
+        <hr />
+        
       <% end %>
 
       <%= link_to_add_fields 'Add Bundle', f, :bundles %>
