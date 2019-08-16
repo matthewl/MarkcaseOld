@@ -12,11 +12,22 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div id="content" class="column col-6 offset-3 mt-5">
-          <%= yield %>
-        </div>
+        <section class="col-12 bg-primary text-light">
+          <div class="container-fluid p-3">
+            <nav class="navbar navbar-expand-md navbar-dark  bg-primary">
+              <div class="container p-3 d-flex align-items-center">
+                <a class="navbar-brand" href="/">
+                  <%= image_tag 'markcase_logo_512.png', width: 50, height: 50, class: ' mr-2 rounded-circle' %>
+                  Markcase
+                </a>
+              </div>
+            </nav>
+          </div>
+        </section>
+
+        <%= yield %>
       </div>
     </div>
 

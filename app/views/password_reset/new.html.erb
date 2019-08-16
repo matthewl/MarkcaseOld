@@ -1,12 +1,19 @@
-<%= form_tag("/password_reset", method: :post, class: "form-password-reset") do %>
+<section class="col-12 bg-light">
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="form-password-reset--heading">Reset your password</h2>
+        <hr/>
+        <%= form_tag("/password_reset", method: :post) do %>
+          <div class="form-group">
+            <%= label_tag :login, "Login" %>
+            <%= text_field_tag :login, params[:email], class: "form-control" %>
+          </div>
 
-  <h2 class="form-password-reset-heading">Reset your password</h2>
+          <%= button_tag "Reset password", class: "btn btn-lg btn-primary btn-block" %>
 
-  <div class="form-group">
-    <%= label_tag :login, "Login" %>
-    <%= text_field_tag :login, params[:email], class: "form-control" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <%= button_tag "Reset password", class: "btn btn-lg btn-primary btn-block" %>
-
-<% end %>
+</section>

@@ -10837,3 +10837,10 @@ html { font-family: 'Inter UI', sans-serif; }
 }
 
 
+.primary-nav > .nav-item > a, a.navbar-brand {
+  font-size: 1.2rem;
+}
+
+.features p, .call-to-action p {
+  line-height: 1.6rem;
+}

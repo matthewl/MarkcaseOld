@@ -1,47 +1,115 @@
-<div id="content" class="col-md-8">
-  <h1>Welcome to Markcase</h1>
-  <h3>A bookcase for your bookmarks</h3>          
+<section class="col-12 bg-primary text-light">
+  <div class="container-fluid p-3">
+    <nav class="navbar navbar-expand-md navbar-dark  bg-primary">
+      <div class="container p-3 d-flex align-items-center">
+        <a class="navbar-brand" href="/">
+          <%= image_tag 'markcase_logo_512.png', width: 50, height: 50, class: ' mr-2 rounded-circle' %>
+          Markcase
+        </a>
 
-  <hr />
-
-  <p>Markcase is a simple bookmarking service with an emphasis on privacy. You can be as public or private as you want with your bookmarks. You can control the visibility of your account, your tag bundles and your bookmarks.</p>
-
-  <p>Markcase lets you bookmark from the browser without any fuss. The design is simple and lightweight.</p>
-</div>
-
-<div id="sidebar" class="col-md-4">
-  <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
-      <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <ul class="primary-nav navbar-nav pull-right">
+          <% if current_account %>
+            <li class="nav-item">
+              <%= link_to 'Back to my bookmarks', user_path(username: current_account.login), class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Login', login_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
       </div>
-    <% end %>
-  <% end %>
+    </nav>
+  </div>
+</section>
 
-  <%= form_tag(home_index_path, class: '') do %>
-    <%= label_tag :login, 'Login' %>
-    <%= text_field_tag :login, nil, id: 'inputLogin', class: 'form-control', placeholder: 'e.g. gandalf', type: 'text' %>
+<section class="col-12 bg-primary text-light">
+  <div class="container-fluid p-5">
+    <h1 class="display-3 pt-5"><strong>Welcome to Markcase</strong></h1>
+    <h3 class="pb-5">A bookcase for your bookmarks</h3>
+  </div>
+</section>
 
-    <%= label_tag :password, 'Password', class: 'mt-3' %>
-    <%= password_field_tag :password, nil, id: 'inputPassword', class: 'form-control' %>
+<section class="col-12 bg-light text-primary">
+  <div class="container-fluid p-5">
+    <p class="h4 pt-5 pb-3">Markcase is a simple bookmarking service with an emphasis on privacy. You can be as public or private as you want with your bookmarks. You can control the visibility of your account, your tag bundles and your bookmarks.</p>
+    <p class="h4 pb-5">Markcase lets you bookmark from the browser without any fuss. The design is simple and lightweight.</p>
+  </div>
+</section>
 
-    <label class="checkbox my-3">
-      <input name="remember-me" type="checkbox"> Remember me
-    </label>
+<section class="col-12 bg-white text-primary">
+  <div class="container-fluid p-5">
+    <div class="row features">
+      <div class="col">
+        <h3 class="mb-2">Tag feeds</h3>
+        <p class="h5">Each tag comes with it's own feed. Even if your account is private, you can still subscribe to a tag's private feed.</p>
+      </div>
 
-    <%= button_tag 'Log in', class: 'btn btn-lg btn-primary btn-block' %>
-  <% end %>
+      <div class="col">
+        <h3 class="mb-2">Search</h3>
+        <p class="h5">Markcase supports searching across all your bookmarks.</p>
+      </div>
 
-  <hr/>
+      <div class="col">
+        <h3 class="mb-2">Bundles</h3>
+        <p class="h5">Group your bookmarks into bundles to keep your bookmarks organised. Don't like sharing your bundles? No problem, they can be set to private as well.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <p>
-    <%= link_to 'Forgot your password?', new_password_reset_path %>
-  </p>
+<section class="col-12 bg-light">
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
 
-  <% if @accepting_registrations  && !Setting.first.single_account? %>
-    <hr />
-    <p><%= link_to 'Create your account', new_account_path %></p>
-    <p>Registrations are only open for a limited time during the beta phase.</p>
-  <% end %>
-</div>
+        <h3 class="mb-2">Already have an account?</h3>
+
+        <hr />
+
+        <%= form_tag(home_index_path, id: 'login') do %>
+          <%= label_tag :login, 'Login' %>
+          <%= text_field_tag :login, nil, id: 'inputLogin', class: 'form-control', placeholder: 'e.g. gandalf', type: 'text' %>
+
+          <%= label_tag :password, 'Password', class: 'mt-3' %>
+          <%= password_field_tag :password, nil, id: 'inputPassword', class: 'form-control' %>
+
+          <label class="checkbox my-3">
+            <input name="remember-me" type="checkbox"> Remember me
+          </label>
+
+          <%= button_tag 'Log in', class: 'btn btn-lg btn-primary btn-block' %>
+        <% end %>
+
+        <% flash.each do |name, msg| %>
+          <% if msg.is_a?(String) %>
+            <div class="my-4 alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <%= content_tag :div, msg, id: "flash_#{name}" %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <hr/>
+
+        <p>
+          <%= link_to 'Forgot your password?', new_password_reset_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if @accepting_registrations  && !Setting.first.single_account? %>
+  <section class="col-12 text-light bg-primary">
+    <div class="container-fluid p-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 call-to-action">
+          <p class="h5">Like the idea of having a bookmarking service that respects your privacy? So why not ...</p>
+          <h3><%= link_to 'Create your free trial account', new_account_path, class: 'btn btn-success btn-lg btn-block my-4' %></h3>
+          <small class="mt-5">Registrations are only open for a limited time during the beta phase. After this phase, trial account holders will be required to subscribe to Markcase for an annual fee or close their account.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

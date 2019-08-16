@@ -1,21 +1,38 @@
-<%= form_tag(sessions_path, class: 'form-signin') do %>
-  <h2 class="form-signin-heading">Please sign in</h2>
+<section class="col-12 bg-light">
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <hr/>
+        <%= form_tag(sessions_path, class: '') do %>
+          <%= label_tag :login, 'Login' %>
+          <%= text_field_tag :login, nil, id: 'inputLogin', class: 'form-control', placeholder: 'e.g. gandalf', type: 'text' %>
 
-  <%= label_tag :login, 'Login', class: 'sr-only' %>
-  <%= text_field_tag :login, nil, id: 'inputLogin', class: 'form-control', placeholder: 'e.g. gandalf', type: 'text' %>
+          <%= label_tag :password, 'Password', class: 'mt-3' %>
+          <%= password_field_tag :password, nil, id: 'inputPassword', class: 'form-control' %>
 
-  <%= label_tag :password, 'Password', class: 'sr-only' %>
-  <%= password_field_tag :password, nil, id: 'inputPassword', class: 'form-control' %>
+          <label class="checkbox my-3">
+            <input name="remember-me" type="checkbox"> Remember me
+          </label>
 
-  <label class="checkbox">
-    <input name="remember-me" type="checkbox"> Remember me
-  </label>
+          <%= button_tag 'Log in', class: 'btn btn-lg btn-primary btn-block' %>
+        <% end %>
 
-  <%= button_tag 'Log in', class: 'btn btn-lg btn-primary btn-block' %>
-<% end %>
+        <% flash.each do |name, msg| %>
+          <% if msg.is_a?(String) %>
+            <div class="my-4 alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <%= content_tag :div, msg, id: "flash_#{name}" %>
+            </div>
+          <% end %>
+        <% end %>
 
-<hr/>
+        <hr/>
 
-<p class="text-center">
-  <%= link_to 'Forgot your password?', new_password_reset_path %>
-</p>
+        <p class="text-center">
+          <%= link_to 'Forgot your password?', new_password_reset_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
