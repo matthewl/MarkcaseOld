@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_21_162645) do
     t.datetime "updated_at", null: false
     t.boolean "public_site", default: false
     t.string "rss_auth_token"
-    t.string "login", null: false
+    t.string "login"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.boolean "preview_features", default: false
