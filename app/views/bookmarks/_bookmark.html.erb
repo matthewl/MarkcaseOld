@@ -1,6 +1,6 @@
 <div class="bookmark mb-5">
   <% cache ['v1', bookmark] do %>
-    <h2><%= link_to(bookmark.title, bookmark.url) %></h2>
+    <h4><%= link_to(bookmark.title, bookmark.url) %></h4>
 
     <p class="text-muted post-meta">
       <% unless bookmark.shared? %>
