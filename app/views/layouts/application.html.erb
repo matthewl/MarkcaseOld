@@ -97,7 +97,7 @@
             <hr />
             <% if bundle.shared? %>
               <h5><strong><%= bundle.name %></strong></h5>
-            <% else %>
+            <% elsif !bundle.shared? && @account == current_account %>
               <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
             <% end %>
             
