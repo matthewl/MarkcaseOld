@@ -97,17 +97,25 @@
             <hr />
             <% if bundle.shared? %>
               <h5><strong><%= bundle.name %></strong></h5>
+
+              <p class="tag-bundle text-justify">
+                <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
+                  <% if bundle.tags.include?(tag.name) %>
+                    <%= link_to(tag.name, tag_path(name: tag.name, username: @account.login), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
+                  <% end %>
+                <% end %>
+              </p>
             <% elsif !bundle.shared? && @account == current_account %>
               <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
-            <% end %>
-            
-            <p class="tag-bundle text-justify">
-              <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
-                <% if bundle.tags.include?(tag.name) %>
-                  <%= link_to(tag.name, tag_path(name: tag.name, username: @account.login), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
+
+              <p class="tag-bundle text-justify">
+                  <% tag_cloud(@tags, %w(tag_size_1 tag_size_2 tag_size_3 tag_size_4 tag_size_5)) do |tag, css_class| %>
+                  <% if bundle.tags.include?(tag.name) %>
+                    <%= link_to(tag.name, tag_path(name: tag.name, username: @account.login), class: "#{css_class}", data: { tag_count: tag.taggings_count, tag_name: tag.name }) -%>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </p>
+              </p>
+            <% end %>
           <% end %>
 
           <hr />
