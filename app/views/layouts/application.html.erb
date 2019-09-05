@@ -94,8 +94,8 @@
           <% end %>
 
           <% @account.bundles.each do |bundle| %>
-            <hr />
             <% if bundle.shared? %>
+              <hr />
               <h5><strong><%= bundle.name %></strong></h5>
 
               <p class="tag-bundle text-justify">
@@ -106,6 +106,7 @@
                 <% end %>
               </p>
             <% elsif !bundle.shared? && @account == current_account %>
+              <hr />
               <h5><i class="fas fa-lock pr-2"></i><strong><%= bundle.name %></strong></h5>
 
               <p class="tag-bundle text-justify">
