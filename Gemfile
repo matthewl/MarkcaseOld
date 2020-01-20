@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.1'
+ruby '2.7.0'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'aws-sdk-s3', require: false
 gem 'barnes'
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.4.0', require: false
 gem 'jbuilder', '~> 2.5'
 gem 'pagy'
 gem 'pg', '>= 0.18', '< 2.0'
