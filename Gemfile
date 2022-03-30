@@ -11,7 +11,7 @@ gem 'bootsnap', '>= 1.4.0', require: false
 gem 'jbuilder', '~> 2.5'
 gem 'pagy'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0.0'
 gem 'redis', '~> 4.0'
 gem 'rubocop', require: false
